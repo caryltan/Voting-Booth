@@ -1,16 +1,27 @@
-
-
 # ⛵"Whatever Floats Your Vote"🗳️
 [Link to live site](https://whatever-floats-your-vote.netlify.app/)
 
+## Project Description
+Create an app that allows people to take a quick anonymous poll. Users should be able to create a polling room that can be shared with anyone who should take part in the poll. The poll creator should be able to keep track of how many people have voted and then get or display the secret results. Results are stored within Firebase.
+
+## Note:
+This is a refactored version of a group project that was worked on at Juno College. 
+
+## Upcoming Changes
+- hide Firebase sensitive data within .env
+- utilize useContext/Redux to control global states
+- ability to customize poll aesthetics
+- multiple polling options (add and delete options during creation) (previously only limited to two polling options)
+- performance optimization
+- page and component refactoring
+
+## Original Contributor Credits:
 A collaborative app built at [Juno College of Technology](https://junocollege.com/).
 - Fiona Freemark | [Github](https://github.com/fionafreemark) | [Portfolio](https://freemark.dev/)
 - Chris O'Bray | [Github](https://github.com/nobrayn) | [Portfolio](https://nobrayn.com/)
 - Libby Reeves | [Github](https://github.com/libbyreeves) | [Portfolio](https://elizabeth-reeves.ca/)
 - Caryl Tan | [Github](https://github.com/caryltan) | [Portfolio](https://caryltan.com/)
 
-## Project Description
-Create an app that allows people to take a quick anonymous poll. Users should be able to create a polling room that can be shared with anyone who should take part in the poll. The poll creator should be able to keep track of how many people have voted and then get or display the secret results. Results are stored within Firebase.
 
 ## Built With 
 - React.js
