@@ -16,6 +16,12 @@ This is a refactored version of a group project that was worked on at Juno Colle
 - performance optimization
 - page and component refactoring
 
+## Installs
+1. npm install
+2. npm install sweetalert2
+3. npm i @ramonak/react-progress-bar
+4. npm i sass
+
 ## Original Contributor Credits:
 A collaborative app built at [Juno College of Technology](https://junocollege.com/).
 - Fiona Freemark | [Github](https://github.com/fionafreemark) | [Portfolio](https://freemark.dev/)
