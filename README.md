@@ -5,7 +5,8 @@
 Create an app that allows people to take a quick anonymous poll. Users should be able to create a polling room that can be shared with anyone who should take part in the poll. The poll creator should be able to keep track of how many people have voted and then get or display the secret results. Results are stored within Firebase.
 
 ## Note:
-This is a refactored version of a group project that was worked on at Juno College. 
+This is a refactored version of a group project that was worked on at Juno College. After graduation, I wanted to take the opportunity to push what could be done with such a universally useful application and apply some new things learned post-grad.
+[Original Repo](https://github.com/Code-Conjurers/Voting-Booth)
 
 ## Upcoming Changes
 - hide Firebase sensitive data within .env
