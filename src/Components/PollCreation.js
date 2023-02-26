@@ -1,6 +1,6 @@
 //Modules
 import { useState } from "react";
-import firebase from "./Firebase";
+import { auth } from "./Firebase.js";
 import { getDatabase, ref, push } from "firebase/database";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -53,8 +53,7 @@ const PollCreation = () => {
     };
 
     //reference the database
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
+    const dbRef = ref(auth);
 
     //push value of pollObject to the database
     push(dbRef, pollObject)

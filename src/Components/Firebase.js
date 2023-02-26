@@ -1,6 +1,6 @@
 //Modules
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 //Firebase Configuration
 const firebaseConfig = {
@@ -14,4 +14,4 @@ const firebaseConfig = {
 
 //Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+export const auth = getDatabase(app);

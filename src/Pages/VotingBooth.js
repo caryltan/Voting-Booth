@@ -6,7 +6,7 @@ import { getDatabase, ref, onValue, update } from "firebase/database";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 //Components
-import firebase from "../Components/Firebase";
+import { auth } from "../Components/Firebase";
 import VotingConfirmation from "../Components/VotingConfirmation";
 //Assets
 import votingImage from "../assets/voting-booth.png"
@@ -21,9 +21,9 @@ const VotingBooth = () => {
   //firebase connection
   useEffect(() => {
     // create a variable (database) that holds our database details
-    const database = getDatabase(firebase);
+    // const database = getDatabase(auth);
     // create a variable that makes a reference(ref) to our database
-    const dbRef = ref(database);
+    const dbRef = ref(auth);
     // get database info on load or on change
     // use event listener onValue
     onValue(dbRef, (response) => {
@@ -69,8 +69,8 @@ const VotingBooth = () => {
       return;
     }
     //reference database
-    const database = getDatabase(firebase);
-    const dbRef = ref(database, `/${poll.key}`);
+    // const database = getDatabase(auth);
+    const dbRef = ref(auth, `/${poll.key}`);
     //update vote to firebase
     update(dbRef, votingObject);
   };

@@ -1,6 +1,6 @@
 //Modules
-import firebase from "./Firebase";
-import { get, ref, getDatabase } from "firebase/database";
+import { auth } from "./Firebase";
+import { get, ref } from "firebase/database";
 import { useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ const ResultsBar = () => {
   //firebase key
   const { boothID } = useParams();
   // initialize database content
-  const database = getDatabase(firebase);
+ 
   //defining State
   const [pollQuestion, setPollQuestion] = useState("");
   const [optionOneDescription, setOptionOneDescription] = useState("");
@@ -21,7 +21,7 @@ const ResultsBar = () => {
   const [voteOnePercent, setVoteOnePercent] = useState(0);
   const [voteTwoPercent, setVoteTwoPercent] = useState(0);
   //database reference
-  const dbRef = ref(database, `/${boothID}`);
+  const dbRef = ref(auth, `/${boothID}`);
 
   //taking a snapshot of the database
   get(dbRef).then((snapshot) => {

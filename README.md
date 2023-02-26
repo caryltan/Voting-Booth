@@ -22,6 +22,7 @@ This is a refactored version of a group project that was worked on at Juno Colle
 3. npm i @ramonak/react-progress-bar
 4. npm i sass
 5. npm install firebase
+6. npm i dotenv
 
 ## Original Contributor Credits:
 A collaborative app built at [Juno College of Technology](https://junocollege.com/).
@@ -41,6 +42,7 @@ A collaborative app built at [Juno College of Technology](https://junocollege.co
 - [Sweet Alert](https://sweetalert2.github.io/)
 - [React Progress Bar](https://www.npmjs.com/package/@ramonak/react-progress-bar)
 - [Sass](https://www.npmjs.com/package/sass)
+- [DotEnv](https://www.npmjs.com/package/dotenv)
 
 
 ## Image Asset Credits

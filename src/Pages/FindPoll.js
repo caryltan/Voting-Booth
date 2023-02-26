@@ -1,5 +1,5 @@
 //Modules
-import firebase from "../Components/Firebase";
+import { auth } from "../Components/Firebase";
 import Swal from "sweetalert2";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { useState, useEffect } from "react";
@@ -17,10 +17,10 @@ const FindPoll = () => {
   // Firebase Connection
   useEffect(() => {
     // create a variable (database) that holds our database details
-    const database = getDatabase(firebase);
+    // const database = getDatabase(auth);
     // create a variable that makes a reference(ref) to our database
-    const dbRef = ref(database);
-    setDbState(database);
+    const dbRef = ref(auth);
+    setDbState(auth);
     // get database info on load or on change
     // use event listener onValue
     onValue(dbRef, (response) => {
