@@ -1,5 +1,5 @@
 //Modules
-import { auth } from "./Firebase";
+import { auth } from "../utils/firebase";
 import { get, ref } from "firebase/database";
 import { useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -7,9 +7,7 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ResultsBar = () => {
-  //firebase key
   const { boothID } = useParams();
-  // initialize database content
  
   //defining State
   const [pollQuestion, setPollQuestion] = useState("");

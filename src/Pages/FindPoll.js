@@ -1,5 +1,5 @@
 //Modules
-import { auth } from "../Components/Firebase";
+import { auth } from "../utils/firebase";
 import Swal from "sweetalert2";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { useState, useEffect } from "react";
@@ -16,28 +16,20 @@ const FindPoll = () => {
   const [dbState, setDbState] = useState();
   // Firebase Connection
   useEffect(() => {
-    // create a variable (database) that holds our database details
-    // const database = getDatabase(auth);
-    // create a variable that makes a reference(ref) to our database
     const dbRef = ref(auth);
     setDbState(auth);
-    // get database info on load or on change
-    // use event listener onValue
+
     onValue(dbRef, (response) => {
-      // create an empty array
       const newState = [];
-      // use Firebase"s .val() to parse our database info into the format we need
       const dataResponse = response.val();
-      // data is an object, so we iterate through it using a for in loop to access each voting booth
+  
       for (let key in dataResponse) {
-        // inside the loop, we push each book name to the empty Array
         newState.push({ key: key, poll: dataResponse[key] });
       }
-      //  set state to match no-longer-empty array
       setPollData(newState);
-    }// end of onValue
-    )//end of onValue
-  }, []); //end of useEffect
+    }
+    )
+  }, []); 
 
   //function to delete polls from page and firebase
   const deleteFunction = (key) => {
