@@ -20,7 +20,9 @@ const VotingBooth = () => {
 
   //firebase connection
   useEffect(() => {
-    const dbRef = ref(auth);
+    const queryParameters = window.location.href.split('/');
+    const lastSegment = queryParameters.pop()
+    const dbRef = ref(auth, lastSegment);
     onValue(dbRef, (response) => {
       const newState = [];
       const dataResponse = response.val();
@@ -30,12 +32,11 @@ const VotingBooth = () => {
       // }
       // setPollData(newState);
       // console.log(dataResponse)
-      setPollData(dataResponse)
+      setPollData(dataResponse);
+      console.log('sasa', dataResponse);
     })
   }, []);
   
-  console.log(pollData)
-
   // function to record vote submitted on button submit
   function handleSubmitVote(e, poll) {
     e.preventDefault();
@@ -118,64 +119,7 @@ const VotingBooth = () => {
       {isSubmitted ?
         <VotingConfirmation boothID={boothID} /> :
         <section className="voting-ticket">
-          {
-            pollData.map((poll, index) => {
-              return (
-                <>
-                <input type="radio" name="choice" value="pollOptionOne" />
-                <label htmlFor="option-one">{pollData.poll}</label>
-                <React.Fragment key={index}>
-                  {poll.key === boothID ?
-                    <div className="voting-booth-container">
-                      <img src={votingImage} alt="Group of people voting digitally on a monitor"/>
-
-                      <div className="voting-question">
-                        <h2>Question <span className="poll-heading">{poll.poll.pollQuestion}</span></h2>
-                      </div>
-
-                      <form onSubmit={(e) => { handleSubmitVote(e, poll) }}>
-                        <fieldset onChange={onChangeValue} className="voting-form">
-                         <div className="selection-container">
-                          {
-                          pollData.poll.map(() => {
-                            return (
-                            <>
-                              <input type="radio" name="choice" value="pollOptionOne" />
-                              <label htmlFor="option-one">{pollData.poll}</label>
-                            </>
-                            )
-                          })
-                          } 
-                          </div>
-
-                          <div className="selection-container">
-                            <input type="radio" id="option-two" name="choice" value="pollOptionTwo" />
-                            <label htmlFor="option-two">{poll.poll.pollOptionTwo.optionTwoDescription}</label>
-                          </div> 
-                        </fieldset>
-
-
-
-                         <div className="button-container">
-                          <button className="button primary" type="submit"> Submit</button>
-                          <div className="secondary-buttons">
-                            <button className="button secondary" aria-label="Copy poll link to keyboard." value="copy" onClick={(e) => {clickHandler(e, poll)}}>Copy Poll Link</button>
-                            <Link className="button secondary" to={`/results/${boothID}`}>See Results Only</Link>
-                          </div>
-                        </div> 
-                      </form>
-
-                    </div>
-                    : null}
-                </React.Fragment>
-                </>
-              );
-            })
-            
-     
-        
-        
-        }</section>
+        </section>
       }
     </>
   );

@@ -21,8 +21,9 @@ const PollCreation = () => {
   const getFormValues = (formValues, e) => {
     e.preventDefault();
     setPollOptionData(formValues);
+    console.log(formValues)
   };
- 
+
   
   const addPoll = (e) => {
     e.preventDefault()
