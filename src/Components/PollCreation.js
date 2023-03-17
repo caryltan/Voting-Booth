@@ -20,8 +20,10 @@ const PollCreation = () => {
 
   const getFormValues = (formValues, e) => {
     e.preventDefault();
+    formValues.map((formValue) => {
+      formValue.votes = 0
+    })
     setPollOptionData(formValues);
-    console.log(formValues)
   };
 
   
@@ -30,7 +32,7 @@ const PollCreation = () => {
     
     const pollObject = {
       pollQuestion: pollQuestion,
-      pollOptions: [...pollOptionData]
+      pollOptions: [...pollOptionData],
     };
 
     const dbRef = ref(auth);
