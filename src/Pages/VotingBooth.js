@@ -33,14 +33,12 @@ const VotingBooth = () => {
       // setPollData(newState);
       // console.log(dataResponse)
       setPollData(dataResponse);
-      console.log('sasa', dataResponse);
     })
   }, []);
   
   // function to record vote submitted on button submit
   function handleSubmitVote(e, poll) {
     e.preventDefault();
-    //ternary to display vote confirmation component or poll options, set to true, to show vote confirmation
     setIsSubmitted(true);
     const votingObject = {
       ...poll.poll,
@@ -65,8 +63,9 @@ const VotingBooth = () => {
       return;
     }
     // reference database
-    const database = getDatabase(auth);
-    const dbRef = ref(auth, `/${poll.key}`);
+    const queryParameters = window.location.href.split('/');
+    const lastSegment = queryParameters.pop()
+    const dbRef = ref(auth, lastSegment);
     //update vote to firebase
     update(dbRef, votingObject);
   };
@@ -95,34 +94,55 @@ const VotingBooth = () => {
 
   // console.log(pollData)
   // console.log(pollData[0].key)
+  console.log('return', pollData.pollOptions);
+  return (
+    <>
+    <div className="voting-question">
+      <h2>Question <span className="poll-heading">{pollData && pollData.pollQuestion}</span></h2>
+    </div>
+
+    <form onSubmit={(e) => { handleSubmitVote(e) }}>
+      
+        <div className="selection-container">
+        <fieldset onChange={onChangeValue}>
+        { pollData.pollOptions && 
+          pollData.pollOptions.map((poll) => {
+            console.log(getValue)
+            return (
+              <div>
+                <input type="radio" name="choice" value={poll.pollOption}/>
+                <label htmlFor={poll.pollOption}>{poll.pollOption}</label>
+              </div>
+            )
+          })
+        }
+        </fieldset>
+        </div>
+      
+
+      <div className="button-container">
+        <button className="button primary" type="submit">Submit</button>
+        <div className="secondary-buttons">
+          <button className="button secondary" aria-label="Copy poll link to keyboard." value="copy" onClick={(e) => {clickHandler(e)}}>Copy Poll Link</button>
+          <Link className="button secondary" to={`/results/${boothID}`}>See Results Only</Link>
+        </div>
+      </div> 
+
+    </form>
+    </>
+  )
+}
+
 
 //   return (
 //     <>
-//     {
-//       pollData.map((poll) => {
-//         return (
-//           <>
-//           <input type="radio" name="choice"/>
-//           <label>{}</label>
-          
-//           </>
-//         )
-//       })
-//     }
+//       {isSubmitted ?
+//         <VotingConfirmation boothID={boothID} /> :
+//         <section className="voting-ticket">
+//         </section>
+//       }
 //     </>
-//   )
-// }
-
-
-  return (
-    <>
-      {isSubmitted ?
-        <VotingConfirmation boothID={boothID} /> :
-        <section className="voting-ticket">
-        </section>
-      }
-    </>
-  );
-};
+//   );
+// };
 
 export default VotingBooth;
