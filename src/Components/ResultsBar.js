@@ -19,76 +19,51 @@ const ResultsBar = () => {
   const [voteOnePercent, setVoteOnePercent] = useState(0);
   const [voteTwoPercent, setVoteTwoPercent] = useState(0);
   const [pollOptions, setPollOptions] = useState([]);
+  const [votePercentages, setVotePercentages] = useState([])
   //database reference
   // const dbRef = ref(auth, `/${boothID}`);
   //taking a snapshot of the database
 
   useEffect(() => {
-    const dbRef = ref(auth, `/${boothID}`);
-    
 
     getDatabase().then((snapshot) => {
       setPollQuestion(snapshot.val().pollQuestion);
       setPollOptions(snapshot.val().pollOptions)
-      console.log('fml', snapshot.val().pollOptions);
       const voteValues = [];
-      if(snapshot.val().pollOptions) {
+      if (snapshot.val().pollOptions) {
         snapshot.val().pollOptions.map((poll) => {
           voteValues.push(poll.votes);
         })
-        let sum= 0;
+        let sum = 0;
         voteValues.forEach(vote => {
           sum += vote;
         });
-        console.log('ss', sum);
-        setTotalVotes(sum)
+
+        let votes = new Array()
+        voteValues.forEach((vote, index) => {
+          votes[index] = (vote / totalVotes) * 100
+
+          // console.log(percent)
+          // setVotePercentages(percent)
+
+        })
+        setVotePercentages(votes)
+        console.log(votes)
+        setTotalVotes(sum);
+        console.log(votePercentages)
+        // setVotePercentages(votePercentages)
       }
     })
-    
-    console.log('TOTAL', totalVotes);
-    
   }, []);
-  
+
   async function getDatabase() {
-    console.log("start")
     const dbRef = ref(auth, `/${boothID}`);
     const snapshot = await get(dbRef);
-    console.log(snapshot);
     return snapshot;
   }
 
-  const handleQuestionChange = () => {
-    const voteValues = [];
-    if(pollOptions) {
-      pollOptions.map((poll) => {
-        voteValues.push(poll.votes);
-      })
-      let sum= 0;
-      const getSumFunction = voteValues.forEach(vote => {
-        sum += vote;
-        
-      });
-      setTotalVotes(getSumFunction)
-      return sum
-    }
-  };
-
-  // const handleQuestionChange = () => {
-  //   const voteValues = [];
-  //   if(pollOptions) {
-  //     pollOptions.map((poll) => {
-  //       voteValues.push(poll.votes);
-  //     })
-  //     let sum= 0;
-  //     voteValues.forEach(vote => {
-  //       sum += vote;
-  //     });
-  //     return sum
-  //   }
-  // };
-   
-
-
+  console.log(votePercentages)
+  console.log('TOTAL', totalVotes);
 
   // get(dbRef).then((snapshot) => {
   //   if (snapshot.exists()) {
@@ -130,16 +105,46 @@ const ResultsBar = () => {
 
   return (
     <>
-    {totalVotes && totalVotes}
       <h2 className="results-bar-h2"><span>Poll Question:</span> {pollQuestion}</h2>
-      {/* <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3> */}
+
+      {totalVotes &&
+        <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>
+      }
+
       <section className="progress-bars-container">
+        {pollOptions &&
+          pollOptions.map((poll, index) => {
+            console.log(poll)
+            return (
+              <>
+                <h2>{poll.pollOption}</h2>
+                <h3>Votes: {poll.votes}</h3>
+                {votePercentages &&
+                  votePercentages.map((percent) => {
+                    console.log(percent)
+                    return (
+                      <ProgressBar completed={percent} bgColor="#E54F6D" />
+                    )
+                  })
+                }
+              </>
+            )
+          })
+        }
+        {/* {votePercentages &&
+          votePercentages.map((percent) => {
+            return (
+              <ProgressBar completed={percent} bgColor="#E54F6D" />
+            )
+          })
+        } */}
         {/* {pollOptions &&
           pollOptions.map((poll) => {
             return (
               <>
-                <h2>{poll.votes}</h2>
-                <ProgressBar completed={poll.votes} bgColor="#E54F6D" />
+                <h2>{poll.pollOption}</h2>
+                <h3>Votes: {poll.votes}</h3>
+                <ProgressBar completed={votePercentages} bgColor="#E54F6D" />
               </>
             )
           })
