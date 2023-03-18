@@ -30,7 +30,7 @@ const VotingBooth = () => {
   }, []);
 
   // function to record vote submitted on button submit
-  function handleSubmitVote(e) {
+  const handleSubmitVote = (e) => {
     e.preventDefault();
 
     const queryParameters = window.location.href.split('/');
@@ -46,15 +46,15 @@ const VotingBooth = () => {
             [`pollOptions/${index}/votes`]: pollOption.votes
           });
           setIsSubmitted(true);
-        }  else if (getValue == null){
-            Swal.fire({
-              icon: "warning",
-              title: "Oops...",
-              text: "You must select a vote...or else!"
-            });
-            setIsSubmitted(false);
-            return;
-          }
+        } else if (getValue == null) {
+          Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "You must select a vote...or else!"
+          });
+          setIsSubmitted(false);
+          return;
+        }
       })
     })
   };
@@ -86,38 +86,37 @@ const VotingBooth = () => {
       {isSubmitted ?
         <VotingConfirmation /> :
         <>
-        <div className="voting-booth-container">
-          <img src={votingImage} alt="Group of people voting digitally on a monitor"/>
-          <div className="voting-question">
-            <h2>Question <span className="poll-heading">{pollData && pollData.pollQuestion}</span></h2>
-          </div>
-
-          <form onSubmit={(e) => { handleSubmitVote(e) }}>
-
-            <div className="selection-container">
-              <fieldset onChange={onChangeValue}>
-                {pollData.pollOptions &&
-                  pollData.pollOptions.map((poll) => {
-                    return (
-                      <div>
-                        <input type="radio" name="choice" value={poll.pollOption} />
-                        <label htmlFor={poll.pollOption}>{poll.pollOption}</label>
-                      </div>
-                    )
-                  })
-                }
-              </fieldset>
+          <div className="voting-booth-container">
+            <img src={votingImage} alt="Group of people voting digitally on a monitor" />
+            <div className="voting-question">
+              <h2>Question <span className="poll-heading">{pollData && pollData.pollQuestion}</span></h2>
             </div>
 
+            <form onSubmit={(e) => { handleSubmitVote(e) }}>
 
-            <div className="button-container">
-              <button className="button primary" type="submit">Submit</button>
-              <div className="secondary-buttons">
-                <button className="button secondary" aria-label="Copy poll link to keyboard." value="Copy" onClick={(e) => { clickHandler(e) }}>Copy Poll Link</button>
-                <Link className="button secondary" to={`/results/${boothID}`}>See Results Only</Link>
+              <div className="selection-container">
+                <fieldset onChange={onChangeValue}>
+                  {pollData.pollOptions &&
+                    pollData.pollOptions.map((poll) => {
+                      return (
+                        <div>
+                          <input type="radio" name="choice" value={poll.pollOption} />
+                          <label htmlFor={poll.pollOption}>{poll.pollOption}</label>
+                        </div>
+                      )
+                    })
+                  }
+                </fieldset>
               </div>
-            </div>
-          </form>
+
+              <div className="button-container">
+                <button className="button primary" type="submit">Submit</button>
+                <div className="secondary-buttons">
+                  <button className="button secondary" aria-label="Copy poll link to keyboard." value="Copy" onClick={(e) => { clickHandler(e) }}>Copy Poll Link</button>
+                  <Link className="button secondary" to={`/results/${boothID}`}>See Results Only</Link>
+                </div>
+              </div>
+            </form>
           </div>
         </>
       }
