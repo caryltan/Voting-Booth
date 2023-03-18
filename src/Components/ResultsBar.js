@@ -27,31 +27,36 @@ const ResultsBar = () => {
   useEffect(() => {
 
     getDatabase().then((snapshot) => {
-      setPollQuestion(snapshot.val().pollQuestion);
-      setPollOptions(snapshot.val().pollOptions)
       const voteValues = [];
-      if (snapshot.val().pollOptions) {
-        snapshot.val().pollOptions.map((poll) => {
+      let newArray = [];
+      setPollQuestion(snapshot.val().pollQuestion);
+      newArray.push(snapshot.val().pollOptions);
+      if (newArray[0]) {
+        newArray[0].map((poll) => {
           voteValues.push(poll.votes);
+          console.log(voteValues)
+          poll.percentage = 0;
+          console.log(poll)
         })
+        console.log(newArray)
         let sum = 0;
-        voteValues.forEach(vote => {
-          sum += vote;
-        });
-
-        let votes = new Array()
         voteValues.forEach((vote, index) => {
-          votes[index] = (vote / totalVotes) * 100
-
-          // console.log(percent)
-          // setVotePercentages(percent)
-
+          sum += vote;
+          
+          // newArray[0][index].percentage = (vote / sum) * 100;
+          console.log(sum)
+          newArray[0][index].percentage = (vote / sum);
         })
-        setVotePercentages(votes)
-        console.log(votes)
+
+        voteValues.forEach((vote, index) => {
+          
+          newArray[0][index].percentage = Math.floor((vote / sum) * 100);
+          // console.log(sum)
+          // newArray[0][index].percentage = (vote / sum);
+        })
+        console.log('votePercentages', newArray );
         setTotalVotes(sum);
-        console.log(votePercentages)
-        // setVotePercentages(votePercentages)
+        setPollOptions(newArray[0]) 
       }
     })
   }, []);
@@ -62,7 +67,6 @@ const ResultsBar = () => {
     return snapshot;
   }
 
-  console.log(votePercentages)
   console.log('TOTAL', totalVotes);
 
   // get(dbRef).then((snapshot) => {
@@ -113,20 +117,13 @@ const ResultsBar = () => {
 
       <section className="progress-bars-container">
         {pollOptions &&
-          pollOptions.map((poll, index) => {
-            console.log(poll)
+          pollOptions.map((poll) => {
+            console.log('poll', poll )
             return (
               <>
                 <h2>{poll.pollOption}</h2>
                 <h3>Votes: {poll.votes}</h3>
-                {votePercentages &&
-                  votePercentages.map((percent) => {
-                    console.log(percent)
-                    return (
-                      <ProgressBar completed={percent} bgColor="#E54F6D" />
-                    )
-                  })
-                }
+                <ProgressBar completed={poll.percentage} bgColor="#E54F6D" />
               </>
             )
           })
