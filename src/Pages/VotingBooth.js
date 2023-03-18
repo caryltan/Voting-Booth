@@ -35,26 +35,29 @@ const VotingBooth = () => {
   function handleSubmitVote(e) {
     e.preventDefault();
     // setIsSubmitted(true);
+
     const queryParameters = window.location.href.split('/');
     const lastSegment = queryParameters.pop()
     const dbRef = ref(auth, lastSegment);
    
     get(dbRef).then((snapshot) => {
-        snapshot.val().pollOptions.map((pollOption) => {
+      const fullPollData = snapshot.val().pollOptions;
+      fullPollData.map((pollOption) => {
           if (getValue === pollOption.pollOption){
-            const votes = pollOption.votes + 1
-            setGetVotes(votes);
-            const newVotes = pollOption.votes(votes)
-
-            console.log(newVotes)
-            // update(dbRef, );
+            pollOption.votes = pollOption.votes + 1
+            // const votes = pollOption.votes + 1
+            // setGetVotes(votes);
+            // const newVotes = pollOption.votes(votes)
+            //update(dbRef, pollOption);
           }
-          // update(dbRef, pollOption);
-          // snapshot.val().pollOptions
         })
+
+        console.log(fullPollData);
+        update(dbRef, fullPollData);
         // console.log('sss',getVotes);
         // console.log(pollData)
     })
+    
 
     
 
