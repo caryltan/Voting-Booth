@@ -2,7 +2,7 @@
 import * as React from "react"
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-import { getDatabase, ref, onValue, update, get } from "firebase/database";
+import { ref, onValue, update, get } from "firebase/database";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 //Components
@@ -17,8 +17,6 @@ const VotingBooth = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { boothID } = useParams();
   const [getValue, setGetValue] = useState();
-  const [getVotes, setGetVotes] = useState();
-  const [updatedPollData, setUpdatedPollData] = useState();
 
   //firebase connection
   useEffect(() => {
@@ -34,7 +32,6 @@ const VotingBooth = () => {
   // function to record vote submitted on button submit
   function handleSubmitVote(e) {
     e.preventDefault();
-
 
     const queryParameters = window.location.href.split('/');
     const lastSegment = queryParameters.pop();
@@ -68,7 +65,7 @@ const VotingBooth = () => {
   };
 
   // function to handle copy link to clipboard
-  const clickHandler = (e, poll) => {
+  const clickHandler = (e) => {
     e.preventDefault();
     const queryParameters = window.location.href.split('/');
     const lastSegment = queryParameters.pop()
@@ -89,6 +86,8 @@ const VotingBooth = () => {
       {isSubmitted ?
         <VotingConfirmation /> :
         <>
+        <div className="voting-booth-container">
+          <img src={votingImage} alt="Group of people voting digitally on a monitor"/>
           <div className="voting-question">
             <h2>Question <span className="poll-heading">{pollData && pollData.pollQuestion}</span></h2>
           </div>
@@ -119,6 +118,7 @@ const VotingBooth = () => {
               </div>
             </div>
           </form>
+          </div>
         </>
       }
     </>
