@@ -42,20 +42,14 @@ const VotingBooth = () => {
    
     get(dbRef).then((snapshot) => {
       const fullPollData = snapshot.val().pollOptions;
-      fullPollData.map((pollOption) => {
+      fullPollData.map((pollOption, index) => {
           if (getValue === pollOption.pollOption){
             pollOption.votes = pollOption.votes + 1
-            // const votes = pollOption.votes + 1
-            // setGetVotes(votes);
-            // const newVotes = pollOption.votes(votes)
-            //update(dbRef, pollOption);
+            update(dbRef, {
+              [`pollOptions/${index}/votes`]: pollOption.votes
+            });
           }
         })
-
-        console.log(fullPollData);
-        update(dbRef, fullPollData);
-        // console.log('sss',getVotes);
-        // console.log(pollData)
     })
     
 
