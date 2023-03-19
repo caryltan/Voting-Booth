@@ -31,7 +31,6 @@ const ResultsBar = () => {
         voteValues.forEach((vote) => {
           sum += vote;
         })
-
         voteValues.forEach((vote, index) => {
           if (vote > 0) {
             newArray[0][index].percentage = Math.floor((vote / sum) * 100);
@@ -43,9 +42,7 @@ const ResultsBar = () => {
         setTotalVotes(sum);
         setPollOptions(newArray[0])
       }
-      console.log(totalVotes);
     })
-
   }, [totalVotes]);
 
   async function getDatabase() {
@@ -54,49 +51,11 @@ const ResultsBar = () => {
     return snapshot;
   }
 
-  // get(dbRef).then((snapshot) => {
-  //   if (snapshot.exists()) {
-  //     setPollQuestion(snapshot.val().pollQuestion);
-  //     setPollOptions(snapshot.val().pollOptions)
-  // setOptionOneDescription(snapshot.val().pollOptionOne.optionOneDescription);
-  // setVotesOne(snapshot.val().pollOptionOne.votes);
-  // setOptionTwoDescription(snapshot.val().pollOptionTwo.optionTwoDescription);
-  // setVotesTwo(snapshot.val().pollOptionTwo.votes);
-  // setTotalVotes(snapshot.val().totalVotes);
-
-  //function to calculate % of votes
-  //     const voteCounting = function getPercentA(x, y) {
-  //       if (!isNaN(x, y)) {
-  //         return Math.round((x / (x + y)) * 100);
-  //       }
-  //     };
-  //     //ensuring vote one or two has data before passing into useState
-  //     const voteCalc = voteCounting(votesOne, votesTwo);
-  //     const voteTwoCalc = voteCounting(votesTwo, votesOne);
-  //     if (voteCalc >= 1 || voteTwoCalc >= 1) {
-  //       setVoteOnePercent(voteCalc, voteTwoCalc);
-  //       setVoteTwoPercent(voteTwoCalc, voteCalc);
-  //     } else if (votesOne === 0 && votesTwo === 0) {
-  //       //error alert if total votes are 0
-  //       Swal.fire("No votes yet!");
-  //     } else {
-  //       setVoteOnePercent(0);
-  //       setVoteTwoPercent(0);
-  //     }
-
-  //     //if snapshot does not exist:
-  //   } else {
-  //     Swal.fire("No data available");
-  //   }
-  // }).catch(() => {
-  //   Swal.fire("Sorry, an error has occurred.");
-  // });
-
   return (
     <>
       <h2 className="results-bar-h2"><span>Poll Question:</span> {pollQuestion}</h2>
 
-        <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>      
+      <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>
 
       <section className="progress-bars-container">
         {pollOptions &&

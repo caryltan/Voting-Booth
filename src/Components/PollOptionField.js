@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const PollInputField = ({ getFormValues }) => {
 
+    const [moreOptions, setMoreOptions] = useState(true)
     const [formValues, setFormValues] = useState([
         {
             pollOption: ""
@@ -15,6 +16,7 @@ const PollInputField = ({ getFormValues }) => {
 
     let addFormFields = () => {
         setFormValues([...formValues, { pollOption: "" }]);
+        // setMoreOptions(true)
     };
 
     let removeFormFields = (i) => {
@@ -23,14 +25,22 @@ const PollInputField = ({ getFormValues }) => {
         setFormValues(newFormValues);
     };
 
+    const handleMoreOptions = () => {
+        setMoreOptions(false)
+    }
+
+    const completeOptions = () => {
+        setMoreOptions(true)
+    }
+
     return (
         <>
             {formValues.map((element, index) => (
-                <div className="form-inline" key={index}>
-                    <label>Poll Option</label>
+                <div className="create-poll-option" key={index}>
                     <input
                         type="text"
                         name="pollOption"
+                        placeholder="Poll Option"
                         value={element.name}
                         onChange={e => handleChange(index, e)}
                     />
@@ -42,8 +52,22 @@ const PollInputField = ({ getFormValues }) => {
                 </div>
             ))}
             <div className="button-section">
-                <button className="button add" type="button" onClick={() => addFormFields()}>Add</button>
-                <button onClick={(e) => getFormValues(formValues, e)}>Done</button>
+                {moreOptions ?
+                    <>
+                        <button onClick={handleMoreOptions} className="button primary">Add More Options</button>
+                    </>
+                    :
+                    <>
+                        <button className="button primary" type="button" onClick={() => addFormFields()}>Add New Option</button>
+                        {/* <button className="button primary" onClick={(e) => getFormValues(formValues, e)}>Done</button> */}
+                        <button className="button primary" onClick={(e) => {
+                            getFormValues(formValues, e)
+                            completeOptions()
+                        }}>
+                            Done
+                        </button>
+                    </>
+                }
             </div>
         </>
     )
