@@ -37,8 +37,6 @@ const PollCreation = () => {
       pollOptions: [...pollOptionData],
     };
 
-    console.log(pollOptionData)
-
     const dbRef = ref(auth);
 
     if (!pollQuestion == "") {
@@ -55,16 +53,16 @@ const PollCreation = () => {
       });
     };
 
-    // if (pollOptionData.includes("")) {
-    //   Swal.fire({
-    //     text: "empty",
-    //   });
-    // }
+
+    pollOptionData.forEach((pollOption) => {
+      if (pollOption.pollOption == "") {
+        Swal.fire({
+          text: "Please fill all fields or remove any empty fields to continue"
+        });
+        setIsSubmitted(false);
+      } 
+    })
   };
-
- 
-
-  console.log(pollOptionData)
 
   const handleQuestionChange = (e) => {
     setPollQuestion(e.target.value);

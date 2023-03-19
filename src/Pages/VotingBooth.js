@@ -16,7 +16,7 @@ const VotingBooth = () => {
   const [pollData, setPollData] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { boothID } = useParams();
-  const [getValue, setGetValue] = useState();
+  const [getID, setGetID] = useState();
 
   //firebase connection
   useEffect(() => {
@@ -40,17 +40,17 @@ const VotingBooth = () => {
     get(dbRef).then((snapshot) => {
       const fullPollData = snapshot.val().pollOptions;
       fullPollData.map((pollOption, index) => {
-        if (getValue === pollOption.pollOption) {
+        if (getID == index) {
           pollOption.votes = pollOption.votes + 1
           update(dbRef, {
             [`pollOptions/${index}/votes`]: pollOption.votes
           });
           setIsSubmitted(true);
-        } else if (getValue == null) {
+        } else if (getID == null) {
           Swal.fire({
             icon: "warning",
             title: "Oops...",
-            text: "You must select a vote...or else!"
+            text: "You must select a vote!"
           });
           setIsSubmitted(false);
           return;
@@ -61,7 +61,7 @@ const VotingBooth = () => {
 
   //function to discern poll option value choices on event
   const onChangeValue = (e) => {
-    setGetValue(e.target.value);
+    setGetID(e.target.id);
   };
 
   // function to handle copy link to clipboard
@@ -97,10 +97,11 @@ const VotingBooth = () => {
               <div className="selection-container">
                 <fieldset onChange={onChangeValue}>
                   {pollData.pollOptions &&
-                    pollData.pollOptions.map((poll) => {
+                    pollData.pollOptions.map((poll, index) => {
+                      console.log(index)
                       return (
                         <div>
-                          <input type="radio" name="choice" value={poll.pollOption} />
+                          <input type="radio" name="choice" id={index}value={poll.pollOption} key={index}/>
                           <label htmlFor={poll.pollOption}>{poll.pollOption}</label>
                         </div>
                       )

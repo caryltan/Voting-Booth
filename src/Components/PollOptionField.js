@@ -31,17 +31,15 @@ const PollInputField = ({ getFormValues, isDone }) => {
 
     const completeOptions = () => {
         setMoreOptions(true)
-        console.log(formValues)
         if (formValues.length <= 0) {
             Swal.fire({
                 text: "Select 'New Option' to Create a Poll Option",
             });
         }
         formValues.forEach((vote) => {
-            console.log(vote.pollOption)
             if (vote.pollOption == "") {
                 Swal.fire({
-                    text: "Poll options cannot be empty. Please fill all fields or remove any empty fields to continue"
+                    text: "Please fill all fields or remove any empty fields to continue"
                 });
             }
         })
