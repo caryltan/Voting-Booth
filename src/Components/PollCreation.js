@@ -81,7 +81,7 @@ const PollCreation = () => {
 
                 <PollOptionField getFormValues={getFormValues} isDone={isDone}/>
                 {previousState ?
-                null:
+                <div></div>:
                 <>
                 <div className="create-buttons">
                   <button className="button primary" aria-label="create poll" onClick={addPoll}>Submit</button>

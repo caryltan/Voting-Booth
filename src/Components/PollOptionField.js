@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PollInputField = ({ getFormValues, isDone}) => {
+const PollInputField = ({ getFormValues, isDone }) => {
 
     const [moreOptions, setMoreOptions] = useState(true)
     const [formValues, setFormValues] = useState([
@@ -46,20 +46,27 @@ const PollInputField = ({ getFormValues, isDone}) => {
                         onChange={e => handleChange(index, e)}
                     />
                     {
-                        index ?
+                        moreOptions ?
+                        null :
                             <button type="button" className="button remove" onClick={() => removeFormFields(index)}>Remove</button>
-                            : null
+                            
                     }
                 </div>
             ))}
             <div className="button-section">
                 {moreOptions ?
                     <>
-                        <button onClick={handleMoreOptions} className="button primary">Add More Options</button>
+                        <button 
+                            onClick= {() => {
+                                handleMoreOptions()
+                                isDone(moreOptions)
+                            }} 
+                            className="button primary">Add More Options</button>
                     </>
                     :
                     <>
-                        <button className="button primary" type="button" onClick={() => addFormFields()}>Add New Option</button>
+                        <button className="button primary" type="button" onClick=
+                            {() => addFormFields()}>Add New Option</button>
                         {/* <button className="button primary" onClick={(e) => getFormValues(formValues, e)}>Done</button> */}
                         <button className="button primary" onClick={(e) => {
                             getFormValues(formValues, e)
