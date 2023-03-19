@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const PollInputField = ({ getFormValues, isDone }) => {
 
@@ -16,7 +17,6 @@ const PollInputField = ({ getFormValues, isDone }) => {
 
     let addFormFields = () => {
         setFormValues([...formValues, { pollOption: "" }]);
-        // setMoreOptions(true)
     };
 
     let removeFormFields = (i) => {
@@ -31,8 +31,13 @@ const PollInputField = ({ getFormValues, isDone }) => {
 
     const completeOptions = () => {
         setMoreOptions(true)
+        console.log(formValues)
+        if (formValues.length <= 0) {
+            Swal.fire({
+            text: "Select 'New Option' to Create a Poll Option",
+        });
+        }
     }
-    console.log(moreOptions)
 
     return (
         <>
@@ -47,27 +52,26 @@ const PollInputField = ({ getFormValues, isDone }) => {
                     />
                     {
                         moreOptions ?
-                        null :
+                            null :
                             <button type="button" className="button remove" onClick={() => removeFormFields(index)}>Remove</button>
-                            
+
                     }
                 </div>
             ))}
             <div className="button-section">
                 {moreOptions ?
                     <>
-                        <button 
-                            onClick= {() => {
+                        <button
+                            onClick={() => {
                                 handleMoreOptions()
                                 isDone(moreOptions)
-                            }} 
-                            className="button primary">Add More Options</button>
+                            }}
+                            className="button primary">+/- Options</button>
                     </>
                     :
                     <>
                         <button className="button primary" type="button" onClick=
-                            {() => addFormFields()}>Add New Option</button>
-                        {/* <button className="button primary" onClick={(e) => getFormValues(formValues, e)}>Done</button> */}
+                            {() => addFormFields()}>+</button>
                         <button className="button primary" onClick={(e) => {
                             getFormValues(formValues, e)
                             isDone(moreOptions)

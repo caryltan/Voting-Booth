@@ -18,7 +18,6 @@ const PollCreation = () => {
   const [previousState, setPreviousState] = useState(true)
 
   const getFormValues = (formValues, e) => {
-    console.log(formValues)
     e.preventDefault();
     formValues.map((formValue) => {
       formValue.votes = 0
@@ -27,14 +26,12 @@ const PollCreation = () => {
   };
 
   const isDone = (moreOptions) => {
-    console.log(moreOptions)
     setPreviousState(moreOptions)
-    console.log(previousState)
   }
-  console.log(previousState)
-  const addPoll = (e) => {
-    e.preventDefault()
 
+  const addPoll = (e, formValues) => {
+    e.preventDefault()
+    console.log(formValues)
     const pollObject = {
       pollQuestion: pollQuestion,
       pollOptions: [...pollOptionData],
@@ -48,7 +45,6 @@ const PollCreation = () => {
         setNewPollId(pollRef);
       }
       );
-
     setIsSubmitted(true);
   } 
 
