@@ -34,9 +34,22 @@ const PollInputField = ({ getFormValues, isDone }) => {
         console.log(formValues)
         if (formValues.length <= 0) {
             Swal.fire({
-            text: "Select 'New Option' to Create a Poll Option",
-        });
+                text: "Select 'New Option' to Create a Poll Option",
+            });
         }
+        formValues.forEach((vote) => {
+            console.log(vote.pollOption)
+            if (vote.pollOption == "") {
+                Swal.fire({
+                    text: "Poll options cannot be empty. Please fill all fields or remove any empty fields to continue"
+                });
+            }
+        })
+        // if (formValues.has("") == true) {
+        //     Swal.fire({
+        //       text: "empty",
+        //     });
+        //   }
     }
 
     return (
@@ -71,7 +84,7 @@ const PollInputField = ({ getFormValues, isDone }) => {
                     :
                     <>
                         <button className="button primary" type="button" onClick=
-                            {() => addFormFields()}>+</button>
+                            {() => addFormFields()}>+ Option</button>
                         <button className="button primary" onClick={(e) => {
                             getFormValues(formValues, e)
                             isDone(moreOptions)

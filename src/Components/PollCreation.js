@@ -29,24 +29,42 @@ const PollCreation = () => {
     setPreviousState(moreOptions)
   }
 
-  const addPoll = (e, formValues) => {
+  const addPoll = (e) => {
     e.preventDefault()
-    console.log(formValues)
+
     const pollObject = {
       pollQuestion: pollQuestion,
       pollOptions: [...pollOptionData],
     };
 
+    console.log(pollOptionData)
+
     const dbRef = ref(auth);
 
-    push(dbRef, pollObject)
-      .then((newPollRef) => {
-        const pollRef = newPollRef.key
-        setNewPollId(pollRef);
-      }
-      );
-    setIsSubmitted(true);
-  } 
+    if (!pollQuestion == "") {
+      push(dbRef, pollObject)
+        .then((newPollRef) => {
+          const pollRef = newPollRef.key
+          setNewPollId(pollRef);
+        }
+        );
+      setIsSubmitted(true);
+    } else {
+      Swal.fire({
+        text: "You cannot have an empty question",
+      });
+    };
+
+    // if (pollOptionData.includes("")) {
+    //   Swal.fire({
+    //     text: "empty",
+    //   });
+    // }
+  };
+
+ 
+
+  console.log(pollOptionData)
 
   const handleQuestionChange = (e) => {
     setPollQuestion(e.target.value);
@@ -75,14 +93,14 @@ const PollCreation = () => {
 
                 <h3>Enter polling options:</h3>
 
-                <PollOptionField getFormValues={getFormValues} isDone={isDone}/>
+                <PollOptionField getFormValues={getFormValues} isDone={isDone} />
                 {previousState ?
-                <div></div>:
-                <>
-                <div className="create-buttons">
-                  <button className="button primary" aria-label="create poll" onClick={addPoll}>Submit</button>
-                </div>
-                </> 
+                  <div></div> :
+                  <>
+                    <div className="create-buttons">
+                      <button className="button primary" aria-label="create poll" onClick={addPoll}>Submit</button>
+                    </div>
+                  </>
                 }
               </form>
             </>
