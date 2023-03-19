@@ -25,6 +25,7 @@ This is a refactored version of a group project that was worked on at Juno Colle
 6. npm i --save @fortawesome/fontawesome-svg-core
 7. npm i --save @fortawesome/free-solid-svg-icons
 8. npm i --save @fortawesome/free-regular-svg-icons
+9. npm i --save @fortawesome/react-fontawesome@latest
 
 ## Original Contributor Credits:
 A collaborative app built at [Juno College of Technology](https://junocollege.com/).
