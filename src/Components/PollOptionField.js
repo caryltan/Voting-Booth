@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PollInputField = ({ getFormValues }) => {
+const PollInputField = ({ getFormValues, isDone}) => {
 
     const [moreOptions, setMoreOptions] = useState(true)
     const [formValues, setFormValues] = useState([
@@ -32,6 +32,7 @@ const PollInputField = ({ getFormValues }) => {
     const completeOptions = () => {
         setMoreOptions(true)
     }
+    console.log(moreOptions)
 
     return (
         <>
@@ -62,6 +63,7 @@ const PollInputField = ({ getFormValues }) => {
                         {/* <button className="button primary" onClick={(e) => getFormValues(formValues, e)}>Done</button> */}
                         <button className="button primary" onClick={(e) => {
                             getFormValues(formValues, e)
+                            isDone(moreOptions)
                             completeOptions()
                         }}>
                             Done

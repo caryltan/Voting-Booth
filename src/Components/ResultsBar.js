@@ -24,7 +24,6 @@ const ResultsBar = () => {
       if (newArray[0]) {
         newArray[0].map((poll) => {
           voteValues.push(poll.votes);
-          console.log(voteValues)
           poll.percentage = 0;
         })
         let sum = 0;

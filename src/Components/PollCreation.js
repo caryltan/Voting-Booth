@@ -7,8 +7,6 @@ import Swal from "sweetalert2";
 //Components
 import PollConfirmation from "./PollConfirmation";
 import PollOptionField from "./PollOptionField";
-//Pages
-import FindPoll from "../Pages/FindPoll";
 
 
 const PollCreation = () => {
@@ -17,8 +15,10 @@ const PollCreation = () => {
   const [newPollId, setNewPollId] = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [pollOptionData, setPollOptionData] = useState([])
+  const [previousState, setPreviousState] = useState(true)
 
   const getFormValues = (formValues, e) => {
+    console.log(formValues)
     e.preventDefault();
     formValues.map((formValue) => {
       formValue.votes = 0
@@ -26,6 +26,12 @@ const PollCreation = () => {
     setPollOptionData(formValues);
   };
 
+  const isDone = (moreOptions) => {
+    console.log(moreOptions)
+    setPreviousState(moreOptions)
+    console.log(previousState)
+  }
+  console.log(previousState)
   const addPoll = (e) => {
     e.preventDefault()
 
@@ -44,7 +50,7 @@ const PollCreation = () => {
       );
 
     setIsSubmitted(true);
-  }
+  } 
 
   const handleQuestionChange = (e) => {
     setPollQuestion(e.target.value);
@@ -73,12 +79,15 @@ const PollCreation = () => {
 
                 <h3>Enter polling options:</h3>
 
-                <PollOptionField getFormValues={getFormValues} />
-
+                <PollOptionField getFormValues={getFormValues} isDone={isDone}/>
+                {previousState ?
+                null:
+                <>
                 <div className="create-buttons">
                   <button className="button primary" aria-label="create poll" onClick={addPoll}>Submit</button>
-                  <Link to={`/findpoll`} element={<FindPoll />} className="button secondary"> Find A Poll</Link>
                 </div>
+                </> 
+                }
               </form>
             </>
           }
