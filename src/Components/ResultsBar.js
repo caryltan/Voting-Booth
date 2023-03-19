@@ -11,21 +11,11 @@ const ResultsBar = () => {
 
   //defining State
   const [pollQuestion, setPollQuestion] = useState("");
-  const [optionOneDescription, setOptionOneDescription] = useState("");
-  const [votesOne, setVotesOne] = useState();
-  const [optionTwoDescription, setOptionTwoDescription] = useState("");
-  const [votesTwo, setVotesTwo] = useState();
   const [totalVotes, setTotalVotes] = useState(0);
-  const [voteOnePercent, setVoteOnePercent] = useState(0);
-  const [voteTwoPercent, setVoteTwoPercent] = useState(0);
   const [pollOptions, setPollOptions] = useState([]);
-  const [votePercentages, setVotePercentages] = useState([])
-  //database reference
-  // const dbRef = ref(auth, `/${boothID}`);
-  //taking a snapshot of the database
+
 
   useEffect(() => {
-
     getDatabase().then((snapshot) => {
       const voteValues = [];
       let newArray = [];
@@ -36,38 +26,33 @@ const ResultsBar = () => {
           voteValues.push(poll.votes);
           console.log(voteValues)
           poll.percentage = 0;
-          console.log(poll)
         })
-        console.log(newArray)
         let sum = 0;
-        voteValues.forEach((vote, index) => {
+        voteValues.forEach((vote) => {
           sum += vote;
-          
-          // newArray[0][index].percentage = (vote / sum) * 100;
-          console.log(sum)
-          newArray[0][index].percentage = (vote / sum);
         })
 
         voteValues.forEach((vote, index) => {
-          
-          newArray[0][index].percentage = Math.floor((vote / sum) * 100);
-          // console.log(sum)
-          // newArray[0][index].percentage = (vote / sum);
+          if (vote > 0) {
+            newArray[0][index].percentage = Math.floor((vote / sum) * 100);
+          }
         })
-        console.log('votePercentages', newArray );
+        if (sum === 0) {
+          Swal.fire("No votes yet!");
+        }
         setTotalVotes(sum);
-        setPollOptions(newArray[0]) 
+        setPollOptions(newArray[0])
       }
+      console.log(totalVotes);
     })
-  }, []);
+
+  }, [totalVotes]);
 
   async function getDatabase() {
     const dbRef = ref(auth, `/${boothID}`);
     const snapshot = await get(dbRef);
     return snapshot;
   }
-
-  console.log('TOTAL', totalVotes);
 
   // get(dbRef).then((snapshot) => {
   //   if (snapshot.exists()) {
@@ -111,14 +96,11 @@ const ResultsBar = () => {
     <>
       <h2 className="results-bar-h2"><span>Poll Question:</span> {pollQuestion}</h2>
 
-      {totalVotes &&
-        <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>
-      }
+        <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>      
 
       <section className="progress-bars-container">
         {pollOptions &&
           pollOptions.map((poll) => {
-            console.log('poll', poll )
             return (
               <>
                 <h2>{poll.pollOption}</h2>
@@ -128,43 +110,7 @@ const ResultsBar = () => {
             )
           })
         }
-        {/* {votePercentages &&
-          votePercentages.map((percent) => {
-            return (
-              <ProgressBar completed={percent} bgColor="#E54F6D" />
-            )
-          })
-        } */}
-        {/* {pollOptions &&
-          pollOptions.map((poll) => {
-            return (
-              <>
-                <h2>{poll.pollOption}</h2>
-                <h3>Votes: {poll.votes}</h3>
-                <ProgressBar completed={votePercentages} bgColor="#E54F6D" />
-              </>
-            )
-          })
-        } */}
       </section>
-
-      {/* <h2 className="results-bar-h2"><span>Poll Question:</span> {pollQuestion}</h2>
-      <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>
-      <section className="progress-bars-container">
-        <div className="progress-bar-one">
-          <p className="results-bar-p">
-            <span className="results-option">{optionOneDescription}</span> has {voteOnePercent}% of the vote.
-            </p>
-          <ProgressBar completed={voteOnePercent} bgColor="#E54F6D" />
-        </div>
-        <div className="progress-bar-two">
-          <p className="results-bar-p">
-            <span className="results-option">{optionTwoDescription}</span> has {voteTwoPercent}% of the vote.
-            </p>
-          <ProgressBar completed={voteTwoPercent}
-            bgColor="#724E91" />
-        </div>
-      </section> */}
     </>
   );
 };

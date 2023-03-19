@@ -26,90 +26,29 @@ const PollCreation = () => {
     setPollOptionData(formValues);
   };
 
-  
   const addPoll = (e) => {
     e.preventDefault()
-    
+
     const pollObject = {
       pollQuestion: pollQuestion,
       pollOptions: [...pollOptionData],
     };
 
     const dbRef = ref(auth);
-    console.log(dbRef, "success")
 
     push(dbRef, pollObject)
       .then((newPollRef) => {
         const pollRef = newPollRef.key
         setNewPollId(pollRef);
-        }
+      }
       );
 
     setIsSubmitted(true);
   }
 
-  console.log(newPollId)
-
-  //function for poll creation and upload to firebase
-  // const addPoll = (formValues, e) => {
-  //   e.preventDefault();
-
-  //   //conditional for if a text field is left empty and return an alert if empty
-  //   // if (
-  //   //   !pollQuestion ||
-  //   //   !optionOneDescription ||
-  //   //   !optionTwoDescription
-  //   // ) {
-  //   //   //alert user when a field is left empty
-  //   //   Swal.fire({
-  //   //     icon: "error",
-  //   //     title: "Oops...",
-  //   //     confirmButtonColor: "#451F55D",
-  //   //     text: "Please fill out all fields before submitting the poll!",
-  //   //   });
-  //   //   return;
-  //   // };
-
-  //   //key value pairs to show in firebase
-  //   const pollObject = {
-  //     pollQuestion: pollQuestion,
-  //     // pollOptions: [...formValues]
-  //   };
-  //   console.log(pollObject)
-
-  //   //reference the database
-  //   const dbRef = ref(auth);
-  //   console.log(dbRef, "success")
-
-  //   //push value of pollObject to the database
-  //   push(dbRef, "success")
-  //     .then((newPollRef) => {
-  //       const pollRef = newPollRef.key
-  //       setNewPollId(pollRef);
-  //     });
-  //   // setIsSubmitted(true);
-  //   //return poll fields to empty strings after submission
-  //   // setPollQuestion("");
-  //   // setOptionOneDescription("");
-  //   // setOptionTwoDescription("");
-  // };
-
-  //function to set question field to value entered
   const handleQuestionChange = (e) => {
     setPollQuestion(e.target.value);
   };
-  //function to set poll option one to value entered
-  // const handleOptionOneChange = (e) => {
-  //   setOptionOneDescription(e.target.value);
-  // };
-  // //function to set poll option two to value entered
-  // const handleOptionTwoChange = (e) => {
-  //   setOptionTwoDescription(e.target.value);
-  // };
-
-//   const handleChange = (e) => {
-//     console.log('update the poll array and set state');
-// }
 
   return (
     <section className="create-poll-container">
@@ -134,7 +73,7 @@ const PollCreation = () => {
 
                 <h3>Enter polling options:</h3>
 
-                <PollOptionField getFormValues={getFormValues}/>
+                <PollOptionField getFormValues={getFormValues} />
 
                 <div className="create-buttons">
                   <button className="button primary" aria-label="create poll" onClick={addPoll}>Submit</button>
