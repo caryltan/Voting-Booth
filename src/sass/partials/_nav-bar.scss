@@ -29,17 +29,13 @@
 
 
 .menu-link {
-  border: 1px solid $heading-primary;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 0 20px;
   font-weight: $wt-bold;
   margin-inline: 5px;
 
   &:hover,
   &:focus {
-    border: 1px solid $heading-primary;
-    background-color: $heading-primary;
-    color: $white;
+    color: $blue;
   }
 }
 

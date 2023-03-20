@@ -2,6 +2,7 @@
 @use './mixins' as *;
 
 footer {
+  height: auto;
   background-color: $blue;
   color: $white;
   display: flex;
@@ -100,4 +101,10 @@ footer {
     }
     
   }
+}
+
+.footer-bottom {
+  p, a {
+  font-size: 0.9rem;
+  } 
 }

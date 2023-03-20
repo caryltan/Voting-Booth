@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { auth } from "../utils/firebase.js";
 import { ref, push } from "firebase/database";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 //Components
 import PollConfirmation from "./PollConfirmation";
@@ -60,13 +59,21 @@ const PollCreation = () => {
           text: "Please fill all fields or remove any empty fields to continue"
         });
         setIsSubmitted(false);
-      } 
+      }
     })
   };
 
   const handleQuestionChange = (e) => {
     setPollQuestion(e.target.value);
   };
+
+  const changeBackground = (e) => {
+    e.target.style.background = '#0043bf';
+  }
+
+  const revertBackground = (e) => {
+    e.target.style.background = '#0057fc';
+  }
 
   return (
     <section className="create-poll-container">
@@ -75,7 +82,7 @@ const PollCreation = () => {
         <div>
           {
             <>
-              <h2 className="create-title">Create Your Poll</h2>
+              <h2>Create Your Poll</h2>
               <form className="create-poll-form">
                 <h3>What's your question?</h3>
                 <input
@@ -96,7 +103,13 @@ const PollCreation = () => {
                   <div></div> :
                   <>
                     <div className="create-buttons">
-                      <button className="button primary" aria-label="create poll" onClick={addPoll}>Submit</button>
+                      <button
+                        className="button primary"
+                        aria-label="create poll"
+                        onMouseOver={changeBackground}
+                        onMouseLeave={revertBackground}
+                        onClick={addPoll}>
+                        Submit</button>
                     </div>
                   </>
                 }

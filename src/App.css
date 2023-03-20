@@ -289,6 +289,7 @@ html {
 }
 
 footer {
+  height: auto;
   background-color: #0057fc;
   color: #FFFFFF;
   display: flex;
@@ -384,6 +385,10 @@ footer a:hover, footer a:focus {
   padding: 0;
 }
 
+.footer-bottom p, .footer-bottom a {
+  font-size: 0.9rem;
+}
+
 .nav-bar {
   width: 100%;
   margin-top: 2%;
@@ -407,16 +412,12 @@ footer a:hover, footer a:focus {
 }
 
 .menu-link {
-  border: 1px solid #555555;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 0 20px;
   font-weight: 700;
   margin-inline: 5px;
 }
 .menu-link:hover, .menu-link:focus {
-  border: 1px solid #555555;
-  background-color: #555555;
-  color: #FFFFFF;
+  color: #0057fc;
 }
 
 .burger-menu {
@@ -425,11 +426,12 @@ footer a:hover, footer a:focus {
 }
 
 .create-poll-form {
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid #555555;
+  border: 2px solid #0057fc;
   border-radius: 20px;
   width: 60%;
   margin: 0 auto;
@@ -441,11 +443,13 @@ footer a:hover, footer a:focus {
 }
 .create-poll-form .poll-input {
   width: 100%;
+  height: auto;
   padding: 2%;
   margin: 2% 0;
   border: 1px solid #555555;
   border-radius: 8px;
   margin-bottom: 16px;
+  font-size: 1.6rem;
 }
 .create-poll-form .button-create {
   justify-content: space-evenly;
@@ -455,7 +459,12 @@ footer a:hover, footer a:focus {
 }
 
 .create-poll-container {
-  height: 600px;
+  height: auto;
+  padding-bottom: 100px;
+}
+.create-poll-container h2 {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .create-poll-option {
@@ -518,6 +527,7 @@ button.button {
 
 html {
   background-color: #FFFFFF;
+  height: auto;
 }
 
 .app {
@@ -570,6 +580,10 @@ hr {
 }
 .button.primary a:visited {
   color: #FFFFFF;
+}
+.button.remove {
+  background-color: rgba(170, 170, 170, 0.5803921569);
+  color: #555555;
 }
 
 html {
@@ -631,6 +645,7 @@ h3 {
 
 .find-poll-section {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 5%;
 }
@@ -638,9 +653,7 @@ h3 {
   width: 100%;
   text-align: center;
   margin-top: 1%;
-  margin-bottom: 4%;
-  color: #555555;
-  font-size: 5rem;
+  margin-bottom: 40px;
 }
 
 .find-poll-container {
@@ -648,49 +661,26 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-basis: 31.3333333333%;
-  min-height: 300px;
-  padding: 3% 2.5%;
-  margin: 1% 1%;
-  border: 4px solid #555555;
+  flex-basis: 40%;
+  min-height: 200px;
+  padding: 30px 35px;
+  margin: 20px;
+  box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
   border-radius: 30px;
   transition: 300ms;
 }
 .find-poll-container:hover {
-  border: 4px solid #555555;
-  box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
+  box-shadow: 0px 1px 20px 1px rgba(0, 86, 246, 0.4117647059);
 }
 .find-poll-container h3 {
   margin: 8% 0 5% 0;
-  text-align: center;
+  text-align: left;
+  font-weight: 500;
 }
 
 .h3-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 70%;
-}
-
-.no-poll-container h3 {
-  margin-bottom: 1%;
-}
-.no-poll-container a {
-  align-self: center;
-}
-.no-poll-container:hover {
-  border: 4px solid #555555;
-  box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
-}
-
-.find-poll-img {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2%;
-}
-.find-poll-img img {
-  flex-basis: 50%;
-  max-width: 50%;
 }
 
 .find-poll-links {
@@ -708,8 +698,8 @@ h3 {
   top: 5%;
   right: 5%;
   font-size: 2.2rem;
-  background-color: #555555;
-  color: #555555;
+  background-color: transparent;
+  color: rgba(170, 170, 170, 0.5803921569);
   cursor: pointer;
 }
 .delete-button:hover, .delete-button:focus {
@@ -717,6 +707,22 @@ h3 {
 }
 .delete-button:visited {
   color: #555555;
+}
+
+.bottom-graphic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0 50px 0;
+}
+.bottom-graphic img {
+  max-width: 300px;
+  width: 100%;
+  padding-bottom: 50px;
+}
+.bottom-graphic h3 {
+  padding-bottom: 20px;
 }
 
 .voting-booth-container {
@@ -1006,7 +1012,7 @@ h3 {
 
 @media (max-width: 1260px) {
   .create-poll-container {
-    height: 400px;
+    height: auto;
   }
   .create-poll-container h2 {
     margin-top: 0;
@@ -1041,7 +1047,7 @@ h3 {
 }
 @media (max-width: 800px) {
   .create-poll-container {
-    height: 400px;
+    height: auto;
   }
   .create-poll-container h2 {
     margin-bottom: 60px;

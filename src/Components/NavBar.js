@@ -9,15 +9,27 @@ const NavBar = () => {
   return (
     <div className="nav-bar">
       <h1>
-        <Link className="h1-link" to={`/`} element={<Home />}> Whatever Floats Your Vote </Link>
+        <Link
+          className="h1-link"
+          to={`/`}
+          element={<Home />}>
+          Whatever Floats Your Vote </Link>
       </h1>
       <div className="create-find">
         <ul className="nav-ul" >
           <li>
-            <Link className="menu-link" to={`/createpoll`} element={<CreatePoll />}> Create A Poll</Link>
+            <Link
+              className="menu-link"
+              to={`/createpoll`}
+              element={<CreatePoll />}>
+              Create a Poll</Link>
           </li>
           <li>
-            <Link className="menu-link" to={`/findpoll`} element={<FindPoll />}> Find A Poll</Link>
+            <Link
+              className="menu-link"
+              to={`/findpoll`}
+              element={<FindPoll />}>
+              Find a Poll</Link>
           </li>
         </ul>
       </div>

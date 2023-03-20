@@ -26,10 +26,10 @@ const App = () => {
     <>
       <div className="app">
         <div className="wrapper">
-          <header>
+          <nav>
             <NavBar />
             <Hamburger />
-          </header>
+          </nav>
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
