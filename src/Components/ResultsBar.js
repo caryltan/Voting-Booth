@@ -52,23 +52,30 @@ const ResultsBar = () => {
 
   return (
     <>
-      <h2 className="results-bar-h2"><span>Poll Question:</span> {pollQuestion}</h2>
+      <div className="results-container">
+        <div className="question-container">
+          <h4>Question:</h4>
+          <h2>{pollQuestion}</h2>
+        </div>
 
-      <h3 className="results-bar-h3">Total Votes: {totalVotes}</h3>
+        <section className="progress-bars-container">
+          {pollOptions &&
+            pollOptions.map((poll) => {
+              return (
+                <>
+                  <div className="single-result-container">
+                    <h3>{poll.pollOption}</h3>
+                    <ProgressBar completed={poll.percentage} bgColor="#FF1F25" />
+                    <p>Votes: {poll.votes}</p>
+                  </div>
+                </>
+              )
+            })
+          }
+        </section>
 
-      <section className="progress-bars-container">
-        {pollOptions &&
-          pollOptions.map((poll) => {
-            return (
-              <>
-                <h2>{poll.pollOption}</h2>
-                <h3>Votes: {poll.votes}</h3>
-                <ProgressBar completed={poll.percentage} bgColor="#E54F6D" />
-              </>
-            )
-          })
-        }
-      </section>
+        <h4>Total Votes: {totalVotes}</h4>
+      </div>
     </>
   );
 };
