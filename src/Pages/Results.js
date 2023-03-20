@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ResultsBar from "../Components/ResultsBar";
 //pages
 import FindPoll from "./FindPoll";
-import Home from "./Home";
 
 const Results = () => {
   return (

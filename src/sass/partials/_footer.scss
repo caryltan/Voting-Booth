@@ -80,7 +80,6 @@ footer {
   .footer-right {
     flex-basis: 60%;
     margin-left: 100px;
-    margin-right: 200px;
     display: flex;
     justify-content: space-between;
     .footer-column {
@@ -107,4 +106,7 @@ footer {
   p, a {
   font-size: 0.9rem;
   } 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
