@@ -9,7 +9,7 @@ const VotingConfirmation = () => {
   return (
     <section className="confirmation-container">
       <img src={votingConfirmationImg} alt="Person holding a tablet with a checkmark on their screen" />
-      <h2>Your vote has been recorded!</h2>
+      <h3>Your vote has been recorded!</h3>
       <div className="button-container">
         <Link className="button primary" to={`/results/${boothID}`}>View Results</Link>
       </div>

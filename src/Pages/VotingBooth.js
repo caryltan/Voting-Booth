@@ -2,89 +2,74 @@
 import * as React from "react"
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-import { getDatabase, ref, onValue, update } from "firebase/database";
+import { ref, onValue, update, get } from "firebase/database";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 //Components
-import firebase from "../Components/Firebase";
+import { auth } from "../utils/firebase";
 import VotingConfirmation from "../Components/VotingConfirmation";
 //Assets
-import votingImage from "../assets/voting-booth.png"
+import votingImage from "../assets/voting.png"
 
 const VotingBooth = () => {
   //defining State
   const [pollData, setPollData] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { boothID } = useParams();
-  const [getValue, setGetValue] = useState();
+  const [getID, setGetID] = useState();
 
   //firebase connection
   useEffect(() => {
-    // create a variable (database) that holds our database details
-    const database = getDatabase(firebase);
-    // create a variable that makes a reference(ref) to our database
-    const dbRef = ref(database);
-    // get database info on load or on change
-    // use event listener onValue
+    const queryParameters = window.location.href.split('/');
+    const lastSegment = queryParameters.pop()
+    const dbRef = ref(auth, lastSegment);
     onValue(dbRef, (response) => {
-      // create an empty array
-      const newState = [];
-      // use Firebase"s .val() to parse our database info into the format we need
       const dataResponse = response.val();
-      // data is an object, so we iterate through it using a for in loop to access each voting booth
-      for (let key in dataResponse) {
-        // inside the loop, we push each book name to the empty Array
-        newState.push({ key: key, poll: dataResponse[key] });
-      }
-      //  set state to match no-longer-empty array
-      setPollData(newState);
+      setPollData(dataResponse);
     })
   }, []);
 
-  //function to record vote submitted on button submit
-  function handleSubmitVote(e, poll) {
+  // function to record vote submitted on button submit
+  const handleSubmitVote = (e) => {
     e.preventDefault();
-    //ternary to display vote confirmation component or poll options, set to true, to show vote confirmation
-    setIsSubmitted(true);
-    const votingObject = {
-      ...poll.poll,
-    };
 
-    //conditional logic for tallying votes based on poll option selection 
-    if (getValue === "pollOptionOne") {
-      votingObject.pollOptionOne.votes = votingObject.pollOptionOne.votes + 1;
-      votingObject.totalVotes = votingObject.pollOptionOne.votes + votingObject.pollOptionTwo.votes;
-    } else if (getValue === "pollOptionTwo") {
-      votingObject.pollOptionTwo.votes = votingObject.pollOptionTwo.votes + 1;
-      votingObject.totalVotes = votingObject.pollOptionOne.votes + votingObject.pollOptionTwo.votes;
-    } else {
-      // alert for user if no vote was submitted
-      Swal.fire({
-        icon: "warning",
-        title: "Oops...",
-        text: "You must choose an option, fence-sitter!"
-      });
-      //if error returns, isSubmitted state is false to prevent vote confirmation ternary
-      setIsSubmitted(false);
-      return;
-    }
-    //reference database
-    const database = getDatabase(firebase);
-    const dbRef = ref(database, `/${poll.key}`);
-    //update vote to firebase
-    update(dbRef, votingObject);
+    const queryParameters = window.location.href.split('/');
+    const lastSegment = queryParameters.pop();
+    const dbRef = ref(auth, lastSegment);
+
+    get(dbRef).then((snapshot) => {
+      const fullPollData = snapshot.val().pollOptions;
+      fullPollData.map((pollOption, index) => {
+        if (getID == index) {
+          pollOption.votes = pollOption.votes + 1
+          update(dbRef, {
+            [`pollOptions/${index}/votes`]: pollOption.votes
+          });
+          setIsSubmitted(true);
+        } else if (getID == null) {
+          Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "You must select a vote!"
+          });
+          setIsSubmitted(false);
+          return;
+        }
+      })
+    })
   };
 
   //function to discern poll option value choices on event
   const onChangeValue = (e) => {
-    setGetValue(e.target.value);
+    setGetID(e.target.id);
   };
 
-  //function to handle copy link to clipboard
-  const clickHandler = (e, poll) => {
+  // function to handle copy link to clipboard
+  const clickHandler = (e) => {
     e.preventDefault();
-    //copy url of voting booth
-    navigator.clipboard.writeText(`whatever-floats-your-vote.netlify.app/votingbooth/${poll.key}`)
+    const queryParameters = window.location.href.split('/');
+    const lastSegment = queryParameters.pop()
+    navigator.clipboard.writeText(`whatever-floats-your-vote.netlify.app/votingbooth/${lastSegment}`)
     //alert when link is copied to clipboard
     Swal.fire({
       icon: "success",
@@ -92,7 +77,6 @@ const VotingBooth = () => {
       showConfirmButton: false,
       timer: 1500
     });
-    //isSubmitted set to false to prevent ternary for vote confirmation component
     setIsSubmitted(false);
     return;
   }
@@ -100,49 +84,64 @@ const VotingBooth = () => {
   return (
     <>
       {isSubmitted ?
-        <VotingConfirmation boothID={boothID} /> :
-        <section className="voting-ticket">
-          {
-            pollData.map((poll, index) => {
-              return (
-                <React.Fragment key={index}>
-                  {poll.key === boothID ?
-                    <div className="voting-booth-container">
-                      <img src={votingImage} alt="Group of people voting digitally on a monitor"/>
+        <VotingConfirmation /> :
+        <>
+          <div className="voting-booth-container">
+            <img src={votingImage} alt="A person sitting on the ground, using a phone" />
+            <div className="voting-question">
+              <h4>Question:</h4>
+              <h2 className="poll-heading">{pollData && pollData.pollQuestion}</h2>
+            </div>
 
-                      <div className="voting-question">
-                        <h2>Question <span className="poll-heading">{poll.poll.pollQuestion}</span></h2>
-                      </div>
+            <form onSubmit={(e) => { handleSubmitVote(e) }}>
 
-                      <form onSubmit={(e) => { handleSubmitVote(e, poll) }}>
-                        <fieldset onChange={onChangeValue} className="voting-form">
-                          <div className="selection-container">
-                            <input type="radio" id="option-one" name="choice" value="pollOptionOne" />
-                            <label htmlFor="option-one">{poll.poll.pollOptionOne.optionOneDescription}</label>
-                          </div>
-                          <div className="selection-container">
-                            <input type="radio" id="option-two" name="choice" value="pollOptionTwo" />
-                            <label htmlFor="option-two">{poll.poll.pollOptionTwo.optionTwoDescription}</label>
-                          </div>
-                        </fieldset>
-                        <div className="button-container">
-                          <button className="button primary" type="submit"> Submit</button>
-                          <div className="secondary-buttons">
-                            <button className="button secondary" aria-label="Copy poll link to keyboard." value="copy" onClick={(e) => {clickHandler(e, poll)}}>Copy Poll Link</button>
-                            <Link className="button secondary" to={`/results/${boothID}`}>See Results Only</Link>
-                          </div>
+              <div className="selection-container">
+                <fieldset onChange={onChangeValue}>
+                  {pollData.pollOptions &&
+                    pollData.pollOptions.map((poll, index) => {
+                      return (
+                        <div className="input-container">
+                          <input 
+                          type="radio" 
+                          name="choice" 
+                          id={index} 
+                          value={poll.pollOption} 
+                          key={index} />
+                          <label htmlFor={poll.pollOption}>{poll.pollOption}</label>
                         </div>
-                      </form>
+                      )
+                    })
+                  }
+                </fieldset>
+              </div>
 
-                    </div>
-                    : null}
-                </React.Fragment>
-              );
-            })
-          }
-        </section>}
+              <div className="button-container">
+                <button
+                  className="button primary"
+                  type="submit">
+                  Submit
+                </button>
+                <div className="secondary-buttons">
+                  <div
+                    className="button primary"
+                    aria-label="Copy poll link to keyboard."
+                    value="Copy"
+                    onClick={(e) => { clickHandler(e) }}>
+                    Copy Poll Link
+                  </div>
+                  <Link
+                    className="button primary"
+                    to={`/results/${boothID}`}>
+                    See Results Only
+                  </Link>
+                </div>
+              </div>
+            </form>
+          </div>
+        </>
+      }
     </>
-  );
-};
+  )
+}
 
 export default VotingBooth;

@@ -12,6 +12,7 @@
 
 .hamburger-nav {
   display: flex;
+  width: 100%;
   h1 {
     width: 80%;
   }
@@ -32,46 +33,47 @@
 }
 
 .burger-menu {
-  height: 1.7em;
-  padding: 2px;
-  width: 2.35em;
-  border-radius: 5px;
+  height: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   cursor: pointer;
   z-index: 3;
-  border: 2px solid $transparent;
-  &:hover,
-  &:focus {
-    border: 2px solid $light-purple;
-  }
 }
 
 .burger-bar {
-  width: 2em;
-  height: 0.5em;
-  background-color: $dark-purple;
+  width: 50px;
+  height: 2px;
+  background-color: $heading-primary;
   border-radius: 0.5em;
 }
 
+.burger-bar {
+  &.clicked {
+    background-color: $white;
+    height: 5px;
+  }
+}
+
 .menu {
-  width: 240px;
-  height: 290px;
-  background-color: white;
-  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: $blue;
+  position: fixed;
   top: 0;
+  right: 0;
   z-index: 2;
   display: flex;
-  border: solid $dark-purple 2px;
-  border-radius: 30px;
-
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in 2s;
   .menu-link {
     margin-top: 65px;
     font-size: $fs-med;
     text-align: left;
+    color: $white;
   }
   .menu-link-two {
     margin-top: 20px;
@@ -84,7 +86,7 @@
 }
 
 .burger-bar.clicked:nth-child(1) {
-  transform: rotate(45deg) translate(0.3em, 0em);
+  transform: rotate(45deg) translate(10px, 10px);
   transition: ease-out 0.5s;
 }
 .burger-bar.clicked:nth-child(2) {
@@ -92,13 +94,13 @@
   transition: ease-out 0.5s;
 }
 .burger-bar.clicked:nth-child(3) {
-  transform: rotate(135deg) translate(-0.6em, 0.3em);
+  transform: rotate(-45deg) translate(16px, -15px);
   transition: ease-out 0.5s;
 }
 
 .burger-bar.unclicked {
   transform: rotate(0) translate (0);
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
-  margin-bottom: 6px;
+  // margin-bottom: 6px;
   padding: 3px;
 }

@@ -3,24 +3,72 @@
 
 // Home Page Styles
 
-.home-graphic {
+.home-header {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 
-  img {
+  .text-container {
+    flex-basis: 45%;
     width: 100%;
-    height: auto;
-    flex-basis: 50%;
-    max-width: 40%;
+  }
+
+  .image-container {
+    flex-basis: 45%;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .button {
+    margin: 10px 0;
+  }
+
+  h4 {
+    padding: 15px 0;
   }
 }
 
-.home-button-box {
+.features-section {
+  height: 150px;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  margin-top: 2%;
-  a {
-    margin: 2% 5%;
+  padding: 150px 0;
+  .feature-item {
+    align-items: center;
+    display: flex;
+    flex-basis: 33%;
+    flex-direction: row;
+    justify-content: center;
+    
+
+    .icon-container {
+      width: 100%;
+      display: flex;
+      flex-basis: 30%;
+      max-width: 80px;
+      .fa-layers {
+        left: 0;
+      }
+    }
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      margin: 0 25px;
+      flex-basis: 70%;
+      h3 {
+        font-weight: $wt-bold;
+        font-size: $fs-headingfour;
+        padding: 5px 0;
+      }
+      p {
+        line-height: 1.4;
+      }
+    }
   }
 }

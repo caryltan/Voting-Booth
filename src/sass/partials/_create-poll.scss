@@ -2,32 +2,30 @@
 @use './mixins' as *;
 
 .create-poll-form {
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid $pink;
   border-radius: 20px;
   width: 60%;
   margin: 0 auto;
   padding: 3%;
   box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
-
+  
   h3 {
     margin: 1% 0 1% 0;
   }
 
   .poll-input{
     width: 100%;
+    height: auto;
     padding: 2%;
     margin: 2% 0;
-    border: 1px solid $light-purple;
+    border: 1px solid $heading-primary;
     border-radius: 8px;
     margin-bottom: 16px;
-  }
-
-  .poll-description {
-    min-height: 250px;
+    font-size: 1.6rem;
   }
 
   .button-create {
@@ -40,5 +38,28 @@
 }
 
 .create-poll-container {
-  height: 600px;
+  height: auto;
+  padding-bottom: 100px;
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  h3 {
+    font-size: 1.7rem;
+  }
+}
+
+.create-poll-option {
+  width: 100%;
+  margin: 0 auto;
+  input {
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    margin: 2% 0;
+    border: 1px solid $heading-primary;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 1.6rem;
+  }
 }

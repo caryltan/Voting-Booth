@@ -26,9 +26,9 @@ const Hamburger = () => {
   };
   return (
     <div className="hamburger-nav">
-      <h1>
-        <Link className="h1-link menu-link-ham" to={`/`} element={<Home />}> Whatever Floats <span className="nav-wrap"> Your Vote </span></Link>
-      </h1>
+        <h1>
+          <Link className="h1-link menu-link-ham" to={`/`} element={<Home />}> Whatever Floats <span className="nav-wrap"> Your Vote </span></Link>
+        </h1>
       <div className="burger-container">
         <nav className="burger-nav">
           <button className="burger-menu" onClick={updateMenu}>
