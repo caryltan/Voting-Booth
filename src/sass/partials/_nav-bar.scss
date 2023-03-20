@@ -21,17 +21,17 @@
   }
 }
 
-.nav-ul {
-  display: flex;
-  justify-content: flex-end;
+.create-find {
+  flex-basis: 25%;
 }
 
-
+.nav-ul {
+  display: flex;
+  justify-content: space-between;
+}
 
 .menu-link {
-  padding: 0 20px;
   font-weight: $wt-bold;
-  margin-inline: 5px;
 
   &:hover,
   &:focus {
