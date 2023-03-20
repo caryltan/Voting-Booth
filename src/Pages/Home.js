@@ -35,7 +35,7 @@ const Home = () => {
             onMouseOver={changeBackground}
             onMouseLeave={revertBackground}
             className="button primary">
-            Create a poll</Link>
+            Get Started</Link>
         </div>
         <div className="image-container">
           <img src={HomeGraphic} alt="Group of people on various digital devices" />
@@ -50,12 +50,13 @@ const Home = () => {
               <FontAwesomeIcon
                 icon={faCircle}
                 style={{ color: '#0057fc' }}
-                size="4x"
+                size="3x"
+                transform="grow-3"
               />
               <FontAwesomeIcon
                 icon={faPencil}
                 style={{ color: 'white' }}
-                size="4x"
+                size="3x"
                 transform="shrink-9"
                 inverse
               />
@@ -73,11 +74,12 @@ const Home = () => {
               <FontAwesomeIcon
                 icon={faCircle}
                 style={{ color: '#FFDD0F' }}
-                size="4x"
+                size="3x"
+                transform="grow-3"
               />
               <FontAwesomeIcon
                 icon={faSquarePollHorizontal}
-                size="4x"
+                size="3x"
                 style={{ color: 'white' }}
                 transform="shrink-9 right-1"
                 inverse />
@@ -95,13 +97,14 @@ const Home = () => {
               <FontAwesomeIcon
                 icon={faCircle}
                 style={{ color: '#FF1F25' }}
-                size="4x"
+                size="3x"
+                transform="grow-3"
               />
               <FontAwesomeIcon
                 icon={faShareNodes}
-                size="4x"
+                size="3x"
                 style={{ color: 'white' }}
-                transform="shrink-9 right-1"
+                transform="shrink-8 right-1"
                 inverse />
             </div>
           </div>

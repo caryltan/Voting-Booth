@@ -23,24 +23,28 @@ const App = () => {
 
 
   return (
-    <div className="app wrapper">
-      <header>
-        <NavBar />
-        <Hamburger />               
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/createpoll" element={<CreatePoll />} />
-          <Route path="/pollConfirmation" element={<PollConfirmation />} />
-          <Route path="/findpoll" element={<FindPoll />} />
-          <Route path="/votingbooth/:boothID" element={<VotingBooth />} />
-          <Route path="/results/:boothID" element={<Results />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </main>
+    <>
+      <div className="app">
+        <div className="wrapper">
+          <header>
+            <NavBar />
+            <Hamburger />
+          </header>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/createpoll" element={<CreatePoll />} />
+              <Route path="/pollConfirmation" element={<PollConfirmation />} />
+              <Route path="/findpoll" element={<FindPoll />} />
+              <Route path="/votingbooth/:boothID" element={<VotingBooth />} />
+              <Route path="/results/:boothID" element={<Results />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </main>
+        </div>
+      </div>
       <Footer />
-    </div>
+    </>
   )
 };
 

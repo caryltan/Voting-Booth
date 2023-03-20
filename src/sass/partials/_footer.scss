@@ -2,14 +2,34 @@
 @use './mixins' as *;
 
 footer {
+  background-color: $blue;
+  color: $white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  margin: 0 auto;
+  padding: 50px 0;
   text-align: center;
-
+  position: relative;
+  img {
+    max-width: 300px;
+    width: 100%;
+    right: 10%;
+    bottom: 0;
+    position: absolute;
+  }
+  h3 {
+    color: $white;
+  }
+  h4 {
+    color: $white;
+    padding-top: 5px;
+    font-weight: $wt-bold;
+    span {
+      display: block;
+    }
+  }
   span {
     display: block;
     margin-top: 2px;
@@ -17,20 +37,67 @@ footer {
 
   p {
     margin-bottom: 2px;
+    color: $white;
+    line-height: 1.7;
   }
 
   a {
     display: inline-block;
-    color: $heading-primary;
+    color: $white;
     margin-inline: 4px;
     transition: 500ms;
 
     &:hover,
     &:focus {
-      color: orange;
-      font-weight: $wt-bold;
-      transform: scale(1.1);
-      padding-inline: .4rem;
+      color: $yellow;
     }
+  }
+}
+
+.footer-top {
+  display: flex;
+  width: 75%;
+  text-align: left;
+  justify-content: space-evenly;
+  padding-bottom: 25px;
+  a {
+    margin: 0;
+  }
+  .footer-left {
+    flex-basis: 30%;
+    h3 {
+      padding-bottom: 15px;
+      span {
+        display: inline-block;
+      }
+    }
+    p {
+      line-height: 1.7;
+      margin-right: 40px;
+    }
+  }
+  .footer-right {
+    flex-basis: 60%;
+    margin-left: 100px;
+    margin-right: 200px;
+    display: flex;
+    justify-content: space-between;
+    .footer-column {
+      flex-basis: 20%;
+      li {
+        padding-bottom: 0.75rem;
+      }
+      &.right {
+        flex-basis: 30%;
+        h4 {
+          padding-bottom: 15px;
+        }
+        p {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+    
   }
 }

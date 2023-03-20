@@ -51,7 +51,7 @@ html {
 }
 
 .app {
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -76,6 +76,12 @@ header {
   span {
     margin-top: 12px;
   }
+}
+
+hr {
+  border: 1px solid #ffffff4b;
+  width: 33%;
+  margin: 10px 0;
 }
 
 //button styling
