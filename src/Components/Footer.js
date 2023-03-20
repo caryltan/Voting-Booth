@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
           <div className="footer-column right">
             <h4>Created by</h4>
-            <p>© 2021 <a href="https://caryltan.com/">Caryl Tan</a>. All rights reserved</p>
+            <p>© 2023 <a href="https://caryltan.com/">Caryl Tan</a>. All rights reserved</p>
           </div>
         </div>
       </section>

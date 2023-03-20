@@ -32,7 +32,7 @@ h3 {
   margin: 20px;
   // border: 4px solid $blue;
   box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
-  border-radius: 30px;
+  border-radius: 10px;
   transition: 300ms;
 
   &:hover {
@@ -44,6 +44,12 @@ h3 {
     text-align: left;
     font-weight: $wt-medium;
   }
+  .button {
+    &.secondary {
+      padding: 10px 0;
+    }
+  }
+  
 }
 
 .h3-container {

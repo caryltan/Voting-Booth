@@ -3,7 +3,7 @@
 // attempting to change font size of sweetalert2 text
 .swal2-html-container,
 .swal2-popup {
-  font-size: 1.8rem;
+  font-size: $fs-headingthree;
   color: $heading-primary;
   border-radius: 20px;
   font-family: $fontfam;
@@ -11,18 +11,18 @@
 
 .swal2-styled {
   color: $white;
-  padding: 10px 20px;
+  // padding: 10px 20px;
   font-family: $fontfam;
   font-weight: $wt-bold;
   border: none;
   &.swal2-confirm {
-    background-color: $heading-primary;
-    color: $heading-primary;
+    background-color: $red;
+    color: $white;
     border-radius: 20px;
     border: none;
   }
   &.swal2-cancel {
-    background-color: $heading-primary;
+    background-color: #aaaaaa94;
     border-radius: 20px;
     border: none;
   }

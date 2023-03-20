@@ -83,20 +83,20 @@ const FindPoll = () => {
               </div>
               <div className="find-poll-links">
                 <Link
-                  className="button primary"
-                  to={`/votingbooth/${poll.key}`}
-                  onMouseOver={changeBackgroundBlue}
-                  onMouseLeave={revertBackgroundBlue}
-                >
-                  Vote
-                </Link>
-                <Link
                   className="button secondary"
                   to={`/results/${poll.key}`}
                   onMouseOver={changeBackground}
                   onMouseLeave={revertBackground}
                 >
                   See Results Only
+                </Link>
+                <Link
+                  className="button primary"
+                  to={`/votingbooth/${poll.key}`}
+                  onMouseOver={changeBackgroundBlue}
+                  onMouseLeave={revertBackgroundBlue}
+                >
+                  Vote
                 </Link>
               </div>
               <button

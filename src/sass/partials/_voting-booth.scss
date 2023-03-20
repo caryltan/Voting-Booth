@@ -6,35 +6,43 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 4px solid $heading-primary;
+  box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
   border-radius: 20px;
   max-width: 55%;
   margin: 0 auto;
-  padding: 3%;
+  padding: 50px 30px;
+  margin-bottom: 50px;
   img {
     width: 65%;
   }
   h3 {
     text-align: center;
   }
-
+  h4 {
+    padding: 50px 0 0 0;
+    text-align: center;
+  }
+  h2 {
+    padding: 0 0 25px 0;
+    text-align: center;
+  }
   label {
-    font-size: $fs-med;
+    font-size: 1.75rem;
     font-family: $fontfam;
     color: $heading-primary;
-    cursor: pointer;
+    padding-left: 25px;
   }
 
   input[type="radio"] {
-    accent-color: $heading-primary;
-    height: 22px;
-    width: 22px;
+    accent-color: $blue;
+    height: 28px;
+    width: 28px;
     margin-top: 2px;
     cursor: pointer;
   }
 
   .poll-heading {
-    font-size: $fs-default;
+    font-size: $fs-headingsec;
     display: block;
     margin-bottom: 10px;
   }
@@ -49,11 +57,15 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-
     input {
       margin-right: 25px;
     }
   }
+}
+
+.input-container {
+  padding-bottom: 20px;
+  display: flex;
 }
 
 .button-container {
@@ -61,24 +73,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  button {
+  .button {
     min-width: 200px;
-    margin: 10px 0;
+    text-align: center;
+    margin: 0 10px;
   }
-
   .secondary-buttons {
     display: flex;
     flex-direction: row;
-
+    padding-top: 25px;
+    .button {
+      background-color: #aaaaaa94;
+      color: $heading-secondary;
+    }
     a {
-      margin: 10px 0;
       width: 200px;
       text-align: center;
-      margin-left: 10px;
-    }
-
-    button {
-      margin-right: 10px;
     }
   }
 }

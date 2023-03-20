@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import VotingConfirmation from "../Components/VotingConfirmation";
 //Assets
-import votingImage from "../assets/voting-booth.png"
+import votingImage from "../assets/voting.png"
 
 const VotingBooth = () => {
   //defining State
@@ -87,9 +87,10 @@ const VotingBooth = () => {
         <VotingConfirmation /> :
         <>
           <div className="voting-booth-container">
-            <img src={votingImage} alt="Group of people voting digitally on a monitor" />
+            <img src={votingImage} alt="A person sitting on the ground, using a phone" />
             <div className="voting-question">
-              <h2>Question <span className="poll-heading">{pollData && pollData.pollQuestion}</span></h2>
+              <h4>Question:</h4>
+              <h2 className="poll-heading">{pollData && pollData.pollQuestion}</h2>
             </div>
 
             <form onSubmit={(e) => { handleSubmitVote(e) }}>
@@ -98,10 +99,14 @@ const VotingBooth = () => {
                 <fieldset onChange={onChangeValue}>
                   {pollData.pollOptions &&
                     pollData.pollOptions.map((poll, index) => {
-                      console.log(index)
                       return (
-                        <div>
-                          <input type="radio" name="choice" id={index}value={poll.pollOption} key={index}/>
+                        <div className="input-container">
+                          <input 
+                          type="radio" 
+                          name="choice" 
+                          id={index} 
+                          value={poll.pollOption} 
+                          key={index} />
                           <label htmlFor={poll.pollOption}>{poll.pollOption}</label>
                         </div>
                       )
@@ -111,10 +116,24 @@ const VotingBooth = () => {
               </div>
 
               <div className="button-container">
-                <button className="button primary" type="submit">Submit</button>
+                <button
+                  className="button primary"
+                  type="submit">
+                  Submit
+                </button>
                 <div className="secondary-buttons">
-                  <button className="button secondary" aria-label="Copy poll link to keyboard." value="Copy" onClick={(e) => { clickHandler(e) }}>Copy Poll Link</button>
-                  <Link className="button secondary" to={`/results/${boothID}`}>See Results Only</Link>
+                  <div
+                    className="button primary"
+                    aria-label="Copy poll link to keyboard."
+                    value="Copy"
+                    onClick={(e) => { clickHandler(e) }}>
+                    Copy Poll Link
+                  </div>
+                  <Link
+                    className="button primary"
+                    to={`/results/${boothID}`}>
+                    See Results Only
+                  </Link>
                 </div>
               </div>
             </form>
