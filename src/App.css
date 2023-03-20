@@ -768,8 +768,8 @@ h3 {
 }
 .voting-booth-container input[type=radio] {
   accent-color: #0057fc;
-  height: 28px;
-  width: 28px;
+  min-height: 28px;
+  min-width: 28px;
   margin-top: 2px;
   cursor: pointer;
 }
@@ -1199,6 +1199,9 @@ h3 {
   }
   .button-container .secondary-buttons button {
     margin: 0;
+  }
+  .voting-booth-container {
+    padding: 25px;
   }
 }
 @media (max-width: 800px) {
