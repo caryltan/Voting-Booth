@@ -162,6 +162,11 @@
 
 //media queries at 800px
 @media (max-width: 800px) {
+
+  .wrapper {
+    width: 80%;
+  }
+
   footer {
     .footer-left {
       text-align: center;
@@ -344,11 +349,6 @@
     }
   }
 
-  //hamburger
-  .visible {
-    width: 220px;
-  }
-
   //results
   .results {
     .results-h2 {
@@ -400,6 +400,7 @@
   }
 }
 
+//media query for 444px
 @media (max-width: 444px) {
 
   footer {
@@ -468,6 +469,7 @@
   }
 }
 
+//media query for 428px
 @media (max-width: 428px) {
 
   footer {

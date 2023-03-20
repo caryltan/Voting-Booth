@@ -25,11 +25,12 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <div className="wrapper">
-          <nav>
-            <NavBar />
-            <Hamburger />
-          </nav>
+      <div className="wrapper">
+        <nav>
+          <NavBar />
+          <Hamburger />
+        </nav>
+        
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
