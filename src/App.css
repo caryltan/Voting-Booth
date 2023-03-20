@@ -1257,6 +1257,24 @@ h3 {
   }
 }
 @media (max-width: 560px) {
+  .burger-menu {
+    height: 30px;
+  }
+  .burger-menu .burger-bar {
+    width: 40px;
+    padding: 2px;
+  }
+  .hamburger-nav h1 {
+    padding-top: 20px;
+  }
+  .burger-bar.clicked:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+    transition: ease-out 0.5s;
+  }
+  .burger-bar.clicked:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -9px);
+    transition: ease-out 0.5s;
+  }
   footer .footer-top .footer-right {
     justify-content: space-between;
     width: 90%;
