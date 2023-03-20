@@ -43,11 +43,14 @@ const PollInputField = ({ getFormValues, isDone }) => {
                 });
             }
         })
-        // if (formValues.has("") == true) {
-        //     Swal.fire({
-        //       text: "empty",
-        //     });
-        //   }
+    }
+
+    const changeBackground = (e) => {
+        e.target.style.background = '#0043bf';
+    }
+
+    const revertBackground = (e) => {
+        e.target.style.background = '#0057fc';
     }
 
     return (
@@ -64,7 +67,11 @@ const PollInputField = ({ getFormValues, isDone }) => {
                     {
                         moreOptions ?
                             null :
-                            <button type="button" className="button remove" onClick={() => removeFormFields(index)}>Remove</button>
+                            <button
+                                type="button"
+                                className="button remove"
+                                onClick={() => removeFormFields(index)}>
+                                Remove</button>
 
                     }
                 </div>
@@ -72,18 +79,31 @@ const PollInputField = ({ getFormValues, isDone }) => {
             <div className="button-section">
                 {moreOptions ?
                     <>
-                        <button
+                        <div
+                        onMouseOver={changeBackground}
+                        onMouseLeave={revertBackground} 
                             onClick={() => {
                                 handleMoreOptions()
                                 isDone(moreOptions)
                             }}
-                            className="button primary">+/- Options</button>
+                            className="button primary">
+                                +/- Options</div>
                     </>
                     :
                     <>
-                        <button className="button primary" type="button" onClick=
-                            {() => addFormFields()}>+ Option</button>
-                        <button className="button primary" onClick={(e) => {
+                        <div 
+                        className="button primary" 
+                        type="button" 
+                        onMouseOver={changeBackground}
+                        onMouseLeave={revertBackground}
+                        onClick=
+                            {() => addFormFields()}>
+                                + Option</div>
+                        <button 
+                        className="button primary"
+                        onMouseOver={changeBackground}
+                        onMouseLeave={revertBackground} 
+                        onClick={(e) => {
                             getFormValues(formValues, e)
                             isDone(moreOptions)
                             completeOptions()

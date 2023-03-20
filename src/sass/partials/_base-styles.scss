@@ -9,7 +9,7 @@
 }
 
 .wrapper {
-  width: 85%;
+  width: 75%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -36,41 +36,13 @@ a,
 button {
   display: inline-block;
   text-decoration: none;
-  color: $dark-purple;
+  color: $heading-primary;
   transition: 300ms;
-
-  &:hover,
-  &:focus {
-    color: $pink;
-    cursor: pointer;
-  }
 
   &.button {
     padding: 10px 20px;
     border-radius: 20px;
-    font-weight: $fw-bold;
-
-    &.primary {
-      background-color: $yellow;
-      color: $dark-purple;
-
-      &:hover,
-      &:focus {
-        background-color: $med-purple;
-        color: $white;
-      }
-    }
-
-    &.secondary {
-      background-color: $pink;
-      color: $dark-purple;
-
-      &:hover,
-      &:focus {
-        background-color: $med-purple;
-        color: $white;
-      }
-    }
+    font-weight: $wt-bold;
   }
 }
 
@@ -99,8 +71,34 @@ header {
 }
 
 .voting-question h2 {
-  font-size: $fs-lrg;
+  font-size: $fs-default;
+
   span {
     margin-top: 12px;
+  }
+}
+
+//button styling
+.button {
+  display: inline-block;
+  color: $heading-primary;
+  transition: 300ms;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: $wt-bold;
+  cursor: pointer;
+
+  &.primary {
+    background-color: $blue;
+    color: $white;
+
+    a {
+      color: $white;
+      text-decoration: none;
+
+      &:visited {
+        color: $white;
+      }
+    }
   }
 }

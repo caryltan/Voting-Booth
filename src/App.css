@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -222,25 +222,68 @@ html {
   overflow: hidden;
 }
 
-.home-graphic {
+.home-header {
   display: flex;
-  justify-content: center;
-}
-.home-graphic img {
+  flex-direction: row;
   width: 100%;
-  height: auto;
-  flex-basis: 50%;
-  max-width: 40%;
+  justify-content: space-between;
+}
+.home-header .text-container {
+  flex-basis: 45%;
+  width: 100%;
+}
+.home-header .image-container {
+  flex-basis: 45%;
+  width: 100%;
+}
+.home-header .image-container img {
+  width: 100%;
+}
+.home-header .button {
+  margin: 10px 0;
+}
+.home-header h4 {
+  padding: 15px 0;
 }
 
-.home-button-box {
+.features-section {
+  height: 250px;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  margin-top: 2%;
 }
-.home-button-box a {
-  margin: 2% 5%;
+.features-section .feature-item {
+  display: flex;
+  display: relative;
+  flex-basis: 33%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.features-section .feature-item .icon-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-basis: 30%;
+  max-width: 80px;
+}
+.features-section .feature-item .icon-container .fa-layers {
+  left: 0;
+}
+.features-section .feature-item .text-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px;
+  flex-basis: 70%;
+}
+.features-section .feature-item .text-container h3 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 5px 0;
+}
+.features-section .feature-item .text-container p {
+  line-height: 1.4;
 }
 
 footer {
@@ -261,7 +304,7 @@ footer p {
 }
 footer a {
   display: inline-block;
-  color: #724E91;
+  color: #555555;
   margin-inline: 4px;
   transition: 500ms;
 }
@@ -295,22 +338,22 @@ footer a:hover, footer a:focus {
   max-width: fit-content;
 }
 .h1-link:hover, .h1-link:focus-within {
-  color: #724E91;
+  color: #555555;
   max-width: -moz-fit-content;
   max-width: fit-content;
 }
 
 .menu-link {
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: 1px solid #555555;
   padding: 10px 20px;
   border-radius: 20px;
   font-weight: 700;
   margin-inline: 5px;
 }
 .menu-link:hover, .menu-link:focus {
-  border: 1px solid #22162B;
-  background-color: #451F55;
-  color: #fcfcfc;
+  border: 1px solid #555555;
+  background-color: #555555;
+  color: #FFFFFF;
 }
 
 .burger-menu {
@@ -323,7 +366,7 @@ footer a:hover, footer a:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid #E54F6D;
+  border: 2px solid #555555;
   border-radius: 20px;
   width: 60%;
   margin: 0 auto;
@@ -337,7 +380,7 @@ footer a:hover, footer a:focus {
   width: 100%;
   padding: 2%;
   margin: 2% 0;
-  border: 1px solid #724E91;
+  border: 1px solid #555555;
   border-radius: 8px;
   margin-bottom: 16px;
 }
@@ -361,7 +404,7 @@ footer a:hover, footer a:focus {
   height: auto;
   padding: 2%;
   margin: 2% 0;
-  border: 1px solid #724E91;
+  border: 1px solid #555555;
   border-radius: 8px;
   margin-bottom: 16px;
   font-size: 1.6rem;
@@ -373,7 +416,7 @@ footer a:hover, footer a:focus {
 }
 
 .wrapper {
-  width: 85%;
+  width: 75%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -400,14 +443,8 @@ a,
 button {
   display: inline-block;
   text-decoration: none;
-  color: #22162B;
+  color: #555555;
   transition: 300ms;
-}
-a:hover, a:focus,
-button:hover,
-button:focus {
-  color: #E54F6D;
-  cursor: pointer;
 }
 a.button,
 button.button {
@@ -415,31 +452,9 @@ button.button {
   border-radius: 20px;
   font-weight: 700;
 }
-a.button.primary,
-button.button.primary {
-  background-color: #F8C630;
-  color: #22162B;
-}
-a.button.primary:hover, a.button.primary:focus,
-button.button.primary:hover,
-button.button.primary:focus {
-  background-color: #451F55;
-  color: #fcfcfc;
-}
-a.button.secondary,
-button.button.secondary {
-  background-color: #E54F6D;
-  color: #22162B;
-}
-a.button.secondary:hover, a.button.secondary:focus,
-button.button.secondary:hover,
-button.button.secondary:focus {
-  background-color: #451F55;
-  color: #fcfcfc;
-}
 
 html {
-  background-color: #fcfcfc;
+  background-color: #FFFFFF;
 }
 
 .app {
@@ -461,59 +476,88 @@ header {
 }
 
 .voting-question h2 {
-  font-size: 3rem;
+  font-size: 16px;
 }
 .voting-question h2 span {
   margin-top: 12px;
 }
 
+.button {
+  display: inline-block;
+  color: #555555;
+  transition: 300ms;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.button.primary {
+  background-color: #0057fc;
+  color: #FFFFFF;
+}
+.button.primary a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.button.primary a:visited {
+  color: #FFFFFF;
+}
+
 html {
-  font-size: 62.5%;
-  color: #22162B;
-  text-transform: capitalize;
+  font-size: 16px;
+  color: #555555;
+  font-family: "Poppins", sans-serif;
 }
 
 a,
 p,
 button {
-  font-size: 1.6rem;
-  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
 }
 
 h1 {
-  font-size: 2.2rem;
-  font-family: "Quicksand", sans-serif;
+  font-size: 3.25rem;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
-  color: #451F55;
-  text-transform: capitalize;
+  color: #555555;
   margin: 0;
+  text-transform: capitalize;
+  padding: 25px 0;
 }
 
 h2 {
-  font-size: 6rem;
-  font-family: "Quicksand", sans-serif;
+  font-size: 3.25rem;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
-  color: #451F55;
+  color: #555555;
+  margin: 0;
   text-transform: capitalize;
-  margin: 5% 0 5% 0;
-  text-align: center;
+  padding: 25px 0;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #555555;
+  margin: 0;
+  padding: 20px 0;
 }
 
 .poll-input {
-  font-size: 1.6rem;
-  color: #451F55;
+  font-size: 16px;
+  color: #555555;
 }
 
 .results h2 {
-  color: #22162B;
+  color: #555555;
 }
 
 h3 {
   font-size: 2.2rem;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
-  color: #451F55;
-  text-transform: capitalize;
+  color: #555555;
 }
 
 .find-poll-section {
@@ -526,7 +570,7 @@ h3 {
   text-align: center;
   margin-top: 1%;
   margin-bottom: 4%;
-  color: #451F55;
+  color: #555555;
   font-size: 5rem;
 }
 
@@ -539,12 +583,12 @@ h3 {
   min-height: 300px;
   padding: 3% 2.5%;
   margin: 1% 1%;
-  border: 4px solid #E54F6D;
+  border: 4px solid #555555;
   border-radius: 30px;
   transition: 300ms;
 }
 .find-poll-container:hover {
-  border: 4px solid #724E91;
+  border: 4px solid #555555;
   box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
 }
 .find-poll-container h3 {
@@ -566,7 +610,7 @@ h3 {
   align-self: center;
 }
 .no-poll-container:hover {
-  border: 4px solid #E54F6D;
+  border: 4px solid #555555;
   box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
 }
 
@@ -595,15 +639,15 @@ h3 {
   top: 5%;
   right: 5%;
   font-size: 2.2rem;
-  background-color: rgba(0, 0, 0, 0);
-  color: #451F55;
+  background-color: #555555;
+  color: #555555;
   cursor: pointer;
 }
 .delete-button:hover, .delete-button:focus {
   scale: 0.9;
 }
 .delete-button:visited {
-  color: #451F55;
+  color: #555555;
 }
 
 .voting-booth-container {
@@ -611,7 +655,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 4px solid #E54F6D;
+  border: 4px solid #555555;
   border-radius: 20px;
   max-width: 55%;
   margin: 0 auto;
@@ -625,19 +669,19 @@ h3 {
 }
 .voting-booth-container label {
   font-size: 2.2rem;
-  font-family: "Quicksand", sans-serif;
-  color: #22162B;
+  font-family: "Poppins", sans-serif;
+  color: #555555;
   cursor: pointer;
 }
 .voting-booth-container input[type=radio] {
-  accent-color: #E54F6D;
+  accent-color: #555555;
   height: 22px;
   width: 22px;
   margin-top: 2px;
   cursor: pointer;
 }
 .voting-booth-container .poll-heading {
-  font-size: 3rem;
+  font-size: 16px;
   display: block;
   margin-bottom: 10px;
 }
@@ -704,14 +748,14 @@ h3 {
   max-width: 550px;
   margin: auto;
   padding-top: 20px;
-  border: 4px solid #E54F6D;
+  border: 4px solid #555555;
   border-radius: 5%;
   box-shadow: 0px 3px 20px 2px rgba(122, 122, 122, 0.36);
 }
 
 .results-h2 {
-  font-size: 3rem;
-  color: #000000;
+  font-size: 16px;
+  color: #555555;
   margin-bottom: 30px;
   margin-top: 10px;
 }
@@ -728,7 +772,7 @@ h3 {
 }
 
 .results-bar-h3 {
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 
 .progress-bars-container {
@@ -831,16 +875,16 @@ h3 {
   justify-content: space-between;
   cursor: pointer;
   z-index: 3;
-  border: 2px solid rgba(0, 0, 0, 0);
+  border: 2px solid #555555;
 }
 .burger-menu:hover, .burger-menu:focus {
-  border: 2px solid #724E91;
+  border: 2px solid #555555;
 }
 
 .burger-bar {
   width: 2em;
   height: 0.5em;
-  background-color: #22162B;
+  background-color: #555555;
   border-radius: 0.5em;
 }
 
@@ -852,7 +896,7 @@ h3 {
   top: 0;
   z-index: 2;
   display: flex;
-  border: solid #22162B 2px;
+  border: solid #555555 2px;
   border-radius: 30px;
   flex-direction: column;
 }
@@ -937,7 +981,7 @@ h3 {
     flex-basis: 48%;
   }
   .find-poll-container .delete-button {
-    font-size: 3rem;
+    font-size: 16px;
   }
   .button-container button.primary {
     margin: 0;
@@ -971,7 +1015,7 @@ h3 {
     width: 150%;
   }
   .header-h2 h2 {
-    font-size: 4.5rem;
+    font-size: 16px;
     width: 75%;
     margin: auto;
   }
@@ -986,7 +1030,7 @@ h3 {
     display: none;
   }
   .confirmation-container h2 {
-    font-size: 4.5rem;
+    font-size: 16px;
   }
   .voting-booth-container {
     max-width: 80%;
@@ -1000,7 +1044,7 @@ h3 {
     width: 80%;
   }
   .create-poll-container h2 {
-    font-size: 3rem;
+    font-size: 16px;
   }
   .create-poll-container h3 {
     font-size: 1.8rem;
@@ -1026,20 +1070,20 @@ h3 {
     max-width: 90%;
   }
   .voting-question h3 {
-    font-size: 1.6rem;
+    font-size: 16px;
   }
   .voting-question h3 .poll-heading {
     font-size: 2.2rem;
   }
   .button-container .button.primary {
-    font-size: 1.6rem;
+    font-size: 16px;
     margin: 10px 0 0 0;
   }
   .button-container .button.secondary {
     margin: 10px 0 0 0;
   }
   .confirmation-container h2 {
-    font-size: 3rem;
+    font-size: 16px;
   }
   .confirmation-container .button-container {
     margin: 0;
@@ -1068,7 +1112,7 @@ h3 {
     display: block;
   }
   .header-h2 h2 {
-    font-size: 3rem;
+    font-size: 16px;
   }
   .home-graphic {
     margin: 8% 0;
@@ -1131,26 +1175,26 @@ h3 {
 .swal2-html-container,
 .swal2-popup {
   font-size: 1.8rem;
-  color: #451F55;
+  color: #555555;
   border-radius: 20px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .swal2-styled {
-  color: #fcfcfc;
+  color: #FFFFFF;
   padding: 10px 20px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   border: none;
 }
 .swal2-styled.swal2-confirm {
-  background-color: #E54F6D;
-  color: #22162B;
+  background-color: #555555;
+  color: #555555;
   border-radius: 20px;
   border: none;
 }
 .swal2-styled.swal2-cancel {
-  background-color: #724E91;
+  background-color: #555555;
   border-radius: 20px;
   border: none;
 }

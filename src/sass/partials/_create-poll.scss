@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid $pink;
+  border: 2px solid $heading-primary;
   border-radius: 20px;
   width: 60%;
   margin: 0 auto;
@@ -21,7 +21,7 @@
     width: 100%;
     padding: 2%;
     margin: 2% 0;
-    border: 1px solid $light-purple;
+    border: 1px solid $heading-primary;
     border-radius: 8px;
     margin-bottom: 16px;
   }
@@ -47,7 +47,7 @@
     height: auto;
     padding: 2%;
     margin: 2% 0;
-    border: 1px solid $light-purple;
+    border: 1px solid $heading-primary;
     border-radius: 8px;
     margin-bottom: 16px;
     font-size: 1.6rem;

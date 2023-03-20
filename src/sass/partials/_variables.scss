@@ -1,28 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 // Colours
-$white: #fcfcfc;
-$black: #000000;
-$dark-purple: #22162B;
-$med-purple: #451F55;
-$light-purple: #724E91;
-$pink: #E54F6D;
-$yellow: #F8C630;
-$transparent: #00000000;
+$white: #FFFFFF;
+$font-body: #555555;
+$heading-primary: #111111;
+$heading-secondary: #333333;
+$blue: #0057fc;
+$blue-hover: #0043bf;
+$yellow: #FFDD0F;
+$red: #FF1F25;
+
+//get rid of
+$heading-primary: #555555;
 
 // Fonts Sizes
-$fs-global: 62.5%;
-$fs-3xl: 8rem;
-$fs-2xl: 6rem;
-$fs-xl: 4.5rem;
-$fs-lrg: 3rem;
+$fs-default: 16px;
+$fs-headingprim: 3.25rem; //56px
+$fs-headingsec: 2.25rem; //36px
+$fs-headingthree: 1.5rem; //24px
+$fs-headingfour: 1.25rem; //20px
+$fs-accent: 0.875rem; //14px
+$fs-footer: 1.125rem; //18px
+
+//get rid of
 $fs-med: 2.2rem;
 $fs-small: 1.8rem;
-$fs-default: 1.6rem;
+
 
 // Font Weights
-$fw-default: 400;
-$fw-bold: 700;
+$wt-default: 400;
+$wt-medium: 500;
+$wt-semibold: 600;
+$wt-bold: 700;
+
 
 // Font Family
-$ff: 'Quicksand', sans-serif;
+$fontfam: 'Poppins', sans-serif;

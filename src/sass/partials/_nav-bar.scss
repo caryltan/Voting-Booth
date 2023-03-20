@@ -25,22 +25,22 @@
   &:hover,
   &:focus-within {
     // background-color: ;
-    color: $light-purple;
+    color: $heading-primary;
     max-width: fit-content;
   }
 }
 
 .menu-link {
-  border: 1px solid $transparent;
+  border: 1px solid $heading-primary;
   padding: 10px 20px;
   border-radius: 20px;
-  font-weight: $fw-bold;
+  font-weight: $wt-bold;
   margin-inline: 5px;
 
   &:hover,
   &:focus {
-    border: 1px solid $dark-purple;
-    background-color: $med-purple;
+    border: 1px solid $heading-primary;
+    background-color: $heading-primary;
     color: $white;
   }
 }

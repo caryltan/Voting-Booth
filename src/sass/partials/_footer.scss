@@ -21,14 +21,14 @@ footer {
 
   a {
     display: inline-block;
-    color: $light-purple;
+    color: $heading-primary;
     margin-inline: 4px;
     transition: 500ms;
 
     &:hover,
     &:focus {
       color: orange;
-      font-weight: $fw-bold;
+      font-weight: $wt-bold;
       transform: scale(1.1);
       padding-inline: .4rem;
     }

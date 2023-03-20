@@ -57,7 +57,7 @@
   .find-poll-container {
     flex-basis: calc((100% - 4%) / 2);
     .delete-button {
-      font-size: $fs-lrg;
+      font-size: $fs-default;
     }
   }
   .button-container {
@@ -100,7 +100,7 @@
 
   //home
   .header-h2 h2 {
-    font-size: $fs-xl;
+    font-size: $fs-default;
     width: 75%;
     margin: auto;
   }
@@ -119,7 +119,7 @@
 
   //poll-confirmation
   .confirmation-container h2 {
-    font-size: $fs-xl;
+    font-size: $fs-default;
   }
 
   //voting-booth
@@ -138,7 +138,7 @@
   }
   .create-poll-container {
     h2 {
-      font-size: $fs-lrg;
+      font-size: $fs-default;
     }
     h3 {
       font-size: $fs-small;
@@ -197,7 +197,7 @@
   //voting-confirmation
   .confirmation-container {
     h2 {
-      font-size: $fs-lrg;
+      font-size: $fs-default;
     }
     .button-container {
       margin: 0;
@@ -233,7 +233,7 @@
 
   //home-page
   .header-h2 h2 {
-    font-size: $fs-lrg;
+    font-size: $fs-default;
   }
   .home-graphic {
     margin: 8% 0;
