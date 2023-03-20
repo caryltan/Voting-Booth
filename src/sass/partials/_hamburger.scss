@@ -85,19 +85,6 @@
   display: none;
 }
 
-// .burger-bar.clicked:nth-child(1) {
-//   transform: rotate(45deg) translate(0.3em, 0em);
-//   transition: ease-out 0.5s;
-// }
-// .burger-bar.clicked:nth-child(2) {
-//   transform: scale(0.1);
-//   transition: ease-out 0.5s;
-// }
-// .burger-bar.clicked:nth-child(3) {
-//   transform: rotate(135deg) translate(-0.6em, 0.3em);
-//   transition: ease-out 0.5s;
-// }
-
 .burger-bar.clicked:nth-child(1) {
   transform: rotate(45deg) translate(10px, 10px);
   transition: ease-out 0.5s;

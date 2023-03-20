@@ -468,6 +468,9 @@ footer a:hover, footer a:focus {
   text-align: center;
   margin-bottom: 40px;
 }
+.create-poll-container h3 {
+  font-size: 1.7rem;
+}
 
 .create-poll-option {
   width: 100%;
@@ -935,6 +938,9 @@ h3 {
 .confirmation-container a.button.primary {
   margin: 10px 0 10px 0;
 }
+.confirmation-container h2 {
+  margin-bottom: 0;
+}
 
 .confirm-graphic {
   display: flex;
@@ -1093,13 +1099,6 @@ h3 {
   .find-poll-links .button {
     margin: 2% 0 2% 0;
   }
-  .find-poll-links {
-    flex-direction: column;
-    align-items: center;
-  }
-  .find-poll-links .button {
-    margin: 2% 0 2% 0;
-  }
   .voting-ticket {
     display: flex;
     justify-content: center;
@@ -1145,6 +1144,18 @@ h3 {
   }
 }
 @media (max-width: 1050px) {
+  .create-poll-form h3 {
+    font-size: 1.125rem;
+  }
+  .create-poll-container h2 {
+    font-size: 2.25rem;
+  }
+  .create-poll-container .create-poll-option {
+    margin-bottom: 40px;
+  }
+  .create-poll-container .poll-question {
+    margin-bottom: 40px;
+  }
   footer h3 {
     font-size: 1.125rem;
   }
@@ -1158,12 +1169,35 @@ h3 {
   .create-find {
     flex-basis: 30%;
   }
+  .find-poll-section h2 {
+    font-size: 2.25rem;
+  }
 }
 @media (max-width: 900px) {
+  .create-poll-form {
+    width: 80%;
+  }
   footer img {
     right: 0;
   }
   footer .footer-top .footer-left p {
+    margin: 0;
+  }
+  .button-container {
+    padding: 25px 0;
+  }
+  .button-container .button.primary {
+    margin: 0 0 20px 0;
+  }
+  .button-container .secondary-buttons {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  .button-container .secondary-buttons a {
+    margin: 0;
+  }
+  .button-container .secondary-buttons button {
     margin: 0;
   }
 }
@@ -1195,25 +1229,17 @@ h3 {
     height: auto;
   }
   .create-poll-container h2 {
-    margin-bottom: 60px;
+    margin: 30px 0;
   }
   .find-poll-container {
-    flex-basis: 48%;
+    flex-basis: 70%;
+    text-align: center;
+  }
+  .find-poll-container .h3-container {
+    justify-content: center;
   }
   .find-poll-container .delete-button {
     font-size: 16px;
-  }
-  .button-container button.primary {
-    margin: 0;
-  }
-  .button-container .secondary-buttons {
-    flex-direction: column;
-  }
-  .button-container .secondary-buttons a {
-    margin: 0;
-  }
-  .button-container .secondary-buttons button {
-    margin: 10px 0;
   }
   .menu-link-ham {
     display: block;
@@ -1249,9 +1275,6 @@ h3 {
   .nav-bar {
     display: none;
   }
-  .confirmation-container h2 {
-    font-size: 16px;
-  }
   .voting-booth-container {
     max-width: 80%;
   }
@@ -1266,10 +1289,6 @@ h3 {
   }
   .hamburger-nav h1 {
     padding-top: 20px;
-  }
-  .burger-bar.clicked:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
-    transition: ease-out 0.5s;
   }
   .burger-bar.clicked:nth-child(3) {
     transform: rotate(-45deg) translate(8px, -9px);
@@ -1292,12 +1311,20 @@ h3 {
   }
   .create-poll-form {
     width: 80%;
+    min-height: 400px;
   }
-  .create-poll-container h2 {
+  .create-poll-form .poll-input {
     font-size: 16px;
   }
+  .create-poll-container {
+    padding-bottom: 50px;
+  }
+  .create-poll-container h2 {
+    margin-bottom: 20px;
+    padding-top: 0;
+  }
   .create-poll-container h3 {
-    font-size: 1.8rem;
+    font-size: 16px;
   }
   .find-poll-container {
     flex-basis: 90%;
@@ -1308,7 +1335,7 @@ h3 {
     margin: 20% 0 5% 0;
   }
   .results .results-h2 {
-    font-size: 2.2rem;
+    font-size: 16px;
   }
   .results .results-bar-h2 {
     font-size: 1.8rem;
@@ -1329,14 +1356,14 @@ h3 {
   .button-container .button.secondary {
     margin: 10px 0 0 0;
   }
-  .confirmation-container h2 {
-    font-size: 16px;
-  }
   .confirmation-container .button-container {
     margin: 0;
   }
 }
 @media (max-width: 444px) {
+  footer img {
+    max-width: 150px;
+  }
   footer .footer-top .footer-left h3 {
     padding-bottom: 5px;
   }
@@ -1358,7 +1385,7 @@ h3 {
     padding-bottom: 10px;
   }
   footer .footer-top .footer-right .footer-column.right {
-    flex-basis: 50%;
+    flex-basis: 80%;
   }
   footer .footer-top .footer-right .footer-column.right h4 {
     font-size: 0.7rem;
@@ -1383,6 +1410,9 @@ h3 {
   }
   .progress-bars-container {
     margin-bottom: 0px;
+  }
+  .voting-booth-container img {
+    width: 100%;
   }
 }
 @media (max-width: 428px) {
@@ -1428,19 +1458,23 @@ h3 {
   .create-buttons {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+  }
+  .create-buttons .button-section {
+    text-align: center;
   }
   .create-poll-form {
+    padding-top: 50px;
+    padding-bottom: 50px;
     width: 90%;
   }
   .create-poll-form .poll-input {
     margin-top: 10px;
   }
   .create-poll-container h2 {
-    font-size: 2.2rem;
     margin-bottom: 20px;
   }
   .create-poll-container h3 {
-    font-size: 1.8rem;
     text-align: center;
   }
 }

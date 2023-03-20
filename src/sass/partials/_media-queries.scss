@@ -53,16 +53,6 @@
     }
   }
 
-  //home
-  .find-poll-links {
-    flex-direction: column;
-    align-items: center;
-
-    .button {
-      margin: 2% 0 2% 0;
-    }
-  }
-
   .voting-ticket {
     display: flex;
     justify-content: center;
@@ -124,6 +114,25 @@
 }
 
 @media (max-width: 1050px) {
+
+  .create-poll-form {
+    h3 {
+      font-size: $fs-footer;
+    }
+  }
+
+  .create-poll-container {
+    h2 {
+      font-size: $fs-headingsec;
+    }
+    .create-poll-option {
+      margin-bottom: 40px;
+    }
+    .poll-question {
+      margin-bottom: 40px;
+    }
+  }
+
   footer {
     h3 {
       font-size: $fs-footer;
@@ -142,9 +151,20 @@
   .create-find {
     flex-basis: 30%;
   }
+
+  .find-poll-section {
+    h2 {
+      font-size: $fs-headingsec;
+    }
+  }
 }
 
 @media (max-width: 900px) {
+
+  .create-poll-form {
+    width: 80%;
+  }
+
   footer {
     img {
       right: 0;
@@ -155,6 +175,27 @@
         p {
           margin: 0;
         }
+      }
+    }
+  }
+  .button-container {
+    padding: 25px 0;
+    .button {
+      &.primary {
+        margin: 0 0 20px 0;
+      }
+    }
+
+    .secondary-buttons {
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      a {
+        margin: 0;
+      }
+
+      button {
+        margin: 0;
       }
     }
   }
@@ -205,36 +246,20 @@
     height: auto;
 
     h2 {
-      margin-bottom: 60px;
+      margin: 30px 0;
     }
   }
 
   //find-poll
   .find-poll-container {
-    flex-basis: calc((100% - 4%) / 2);
+    flex-basis: 70%;
+    text-align: center;
+    .h3-container {
+      justify-content: center;
+    }
 
     .delete-button {
       font-size: $fs-default;
-    }
-  }
-
-  .button-container {
-    button {
-      &.primary {
-        margin: 0;
-      }
-    }
-
-    .secondary-buttons {
-      flex-direction: column;
-
-      a {
-        margin: 0;
-      }
-
-      button {
-        margin: 10px 0;
-      }
     }
   }
 
@@ -285,10 +310,6 @@
     display: none;
   }
 
-  //poll-confirmation
-  .confirmation-container h2 {
-    font-size: $fs-default;
-  }
 
   //voting-booth
   .voting-booth-container {
@@ -312,11 +333,6 @@
     h1 {
       padding-top: 20px;
     }
-  }
-
-  .burger-bar.clicked:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
-    transition: ease-out 0.5s;
   }
 
   .burger-bar.clicked:nth-child(3) {
@@ -350,15 +366,21 @@
 
   .create-poll-form {
     width: 80%;
+    min-height: 400px;
+    .poll-input {
+      font-size: $fs-default;
+    }
   }
 
   .create-poll-container {
+    padding-bottom: 50px;
     h2 {
-      font-size: $fs-default;
+      margin-bottom: 20px;
+      padding-top: 0;
     }
 
     h3 {
-      font-size: $fs-small;
+      font-size: $fs-default;
     }
   }
 
@@ -376,7 +398,7 @@
   //results
   .results {
     .results-h2 {
-      font-size: $fs-med;
+      font-size: $fs-default;
     }
 
     .results-bar-h2 {
@@ -414,9 +436,6 @@
 
   //voting-confirmation
   .confirmation-container {
-    h2 {
-      font-size: $fs-default;
-    }
 
     .button-container {
       margin: 0;
@@ -428,6 +447,9 @@
 @media (max-width: 444px) {
 
   footer {
+    img {
+      max-width: 150px;
+    }
     .footer-top {
       .footer-left {
         h3 {
@@ -454,7 +476,7 @@
             padding-bottom: 10px;
           }
           &.right {
-            flex-basis: 50%;
+            flex-basis: 80%;
 
             h4 {
               font-size: 0.7rem;
@@ -490,6 +512,12 @@
 
   .progress-bars-container {
     margin-bottom: 0px;
+  }
+
+  .voting-booth-container {
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -555,9 +583,15 @@
   .create-buttons {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    .button-section {
+      text-align: center;
+    }
   }
 
   .create-poll-form {
+    padding-top: 50px;
+    padding-bottom: 50px;
     .poll-input {
       margin-top: 10px;
     }
@@ -567,12 +601,10 @@
 
   .create-poll-container {
     h2 {
-      font-size: $fs-med;
       margin-bottom: 20px;
     }
 
     h3 {
-      font-size: $fs-small;
       text-align: center;
     }
   }
