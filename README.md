@@ -71,6 +71,8 @@ A collaborative app built at [Juno College of Technology](https://junocollege.co
 <table>
     <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-home-page.png" alt="desktop view of home page" </td>
     <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-home-page-mobile.png" alt="mobile view of home page" </td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-voting-booth.png" alt="desktop view of voting page"</td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-results.png" alt="desktop view of results page"</td>
     <td><img src="src/assets/read-me/app-preview-create-poll-mobile.png" alt="mobile view of the poll creation page" </td>
     <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-find-poll.png" alt="desktop view of find poll page" </td>
     <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-find-poll-mobile.png" alt="mobile view of find poll page" </td>
