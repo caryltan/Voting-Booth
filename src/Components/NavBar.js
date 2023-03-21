@@ -8,7 +8,6 @@ import CreatePoll from "../Pages/CreatePoll";
 const NavBar = () => {
   return (
     <>
-      
         <div className="nav-bar">
           <h1>
             <Link

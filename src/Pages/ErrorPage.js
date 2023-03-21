@@ -7,7 +7,7 @@ const ErrorPage = () => {
   return (
     <>
       <div className="error-container">
-        <img src={ErrorGraphic} alt="404 error image. Astronaut lost in space!"/>
+        <img src={ErrorGraphic} alt="404 error image. Astronaut lost in space!" />
       </div>
       <h2 className="error-h2">Oh no! Page not found!</h2>
       <div className="error-btn">
