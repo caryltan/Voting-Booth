@@ -1,17 +1,18 @@
 # ⛵"Whatever Floats Your Vote"🗳️
-[Link to live site](https://whatever-floats-your-vote.netlify.app/)
+[Link to live site](https://whatever-floats-your-vote-v2.netlify.app/)
 
 ## Project Description
 Create an app that allows people to take a quick anonymous poll. Users should be able to create a polling room that can be shared with anyone who should take part in the poll. The poll creator should be able to keep track of how many people have voted and then get or display the secret results. Results are stored within Firebase.
 
 ## Note:
 This is a refactored version of a group project that was worked on at Juno College. After graduation, I wanted to take the opportunity to push what could be done with such a universally useful application and apply some new things learned post-grad.
-[Original Repo](https://github.com/Code-Conjurers/Voting-Booth)
 
-## Upcoming Changes
+[Original Repo](https://github.com/Code-Conjurers/Voting-Booth) | [Original Live Site](https://whatever-floats-your-vote.netlify.app/)
+
+## Changes Made
+- more consistent image, colours, and branding
+- reworked home page for marketing
 - hide Firebase sensitive data within .env
-- utilize useContext/Redux to control global states
-- ability to customize poll aesthetics
 - multiple polling options (add and delete options during creation) (previously only limited to two polling options)
 - performance optimization
 - page and component refactoring
@@ -51,7 +52,8 @@ A collaborative app built at [Juno College of Technology](https://junocollege.co
 - [Undraw](https://undraw.co/)
 - [SVG Repo](https://www.svgrepo.com/svg/427580/approved-aproved-confirm-2)
 - [React Icons](https://react-icons.github.io/react-icons/)
-- [Freepik](https://www.freepik.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [Freepik, Author: "Stories"](https://www.freepik.com/author/stories)
 
 
 ## Screenshots

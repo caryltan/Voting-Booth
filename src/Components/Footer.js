@@ -53,8 +53,6 @@ const Footer = () => {
           </div>
         </section>
 
-       
-
         <section className="footer-bottom">
           <hr />
           <p>
