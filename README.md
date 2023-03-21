@@ -56,7 +56,7 @@ A collaborative app built at [Juno College of Technology](https://junocollege.co
 - [Freepik, Author: "Stories"](https://www.freepik.com/author/stories)
 
 
-## Screenshots
+## v1 Screenshots
 <table>
   <tr>
      <td><img src="https://user-images.githubusercontent.com/40412421/220480959-a1ee2e75-28e7-43c8-8133-a0a44a0c6087.png" alt="Screenshot of home page of app with a voting image and buttons to participate in or create a poll" /></td>
@@ -65,4 +65,15 @@ A collaborative app built at [Juno College of Technology](https://junocollege.co
     <td><img src="https://user-images.githubusercontent.com/40412421/220480960-9c4136bf-dcf2-42a1-804d-16aac32ceb76.png" alt="Screenshot of voting booth where you can vote on a poll option and submit your answer"/></td>
     <td><img src="https://user-images.githubusercontent.com/40412421/220480962-4c3bda6b-6423-4988-9092-b1bc195e3853.png" alt="Screenshot of a results page showing the results from an existing poll"/></td>
   </tr>
+</table>
+
+## v2 Screenshots
+<table>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-home-page.png" alt="desktop view of home page" </td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-home-page-mobile.png" alt="mobile view of home page" </td>
+    <td><img src="src/assets/read-me/app-preview-create-poll-mobile.png" alt="mobile view of the poll creation page" </td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-find-poll.png" alt="desktop view of find poll page" </td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-find-poll-mobile.png" alt="mobile view of find poll page" </td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-footer.png" alt="desktop view of footer" </td>
+    <td><img src="https://github.com/caryltan/Voting-Booth/blob/126085fe5f10bc70c55f0a962f23d7bf5a6d5b9f/src/assets/read-me/app-preview-results.png" alt="desktop view of results page"</td>
 </table>
