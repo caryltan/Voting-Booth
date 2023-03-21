@@ -6,9 +6,12 @@ Create an app that allows people to take a quick anonymous poll. Users should be
 
 ## Note:
 This is a refactored version of a group project that was worked on at Juno College. After graduation, I wanted to take the opportunity to push what could be done with such a universally useful application and apply some new things learned post-grad.
+
 [Original Repo](https://github.com/Code-Conjurers/Voting-Booth) | [Original Live Site](https://whatever-floats-your-vote.netlify.app/)
 
 ## Changes Made
+- more consistent image, colours, and branding
+- reworked home page for marketing
 - hide Firebase sensitive data within .env
 - multiple polling options (add and delete options during creation) (previously only limited to two polling options)
 - performance optimization
